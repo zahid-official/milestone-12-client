@@ -1,5 +1,6 @@
 import Navbar from "../../Shared/Navbar";
 import Banner from "./Banner";
+import Feature from "./Feature";
 
 const Home = () => {
   return (
@@ -15,6 +16,11 @@ const Home = () => {
           <Banner></Banner>
         </div>
       </header>
+
+      {/* Feature */}
+      <section className="bg-[#f0eee6] py-44">
+        <Feature></Feature>
+      </section>
     </>
   );
 };
