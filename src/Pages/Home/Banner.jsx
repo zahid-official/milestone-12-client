@@ -19,7 +19,7 @@ const Banner = () => {
           clickable: true,
         }}
         modules={[Pagination, EffectFade]}
-        className="mySwiper min-h-[89vh]"
+        className="mySwiper min-h-[88vh]"
       >
         {/* slider-01 */}
         <SwiperSlide>

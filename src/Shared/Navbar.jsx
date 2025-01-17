@@ -33,16 +33,16 @@ const Navbar = () => {
         <NavLink to={"/"} className={'dark:hover:bg-slate-800'}>Home</NavLink>
       </li>
       <li className="text-lg font-bold">
-        <NavLink to={"/route2"} className={'dark:hover:bg-slate-800'}>Route2</NavLink>
+        <NavLink to={"/allScholarship"} className={'dark:hover:bg-slate-800'}>All Scholarship</NavLink>
       </li>
       <li className="text-lg font-bold">
-        <NavLink to={"/route3"} className={'dark:hover:bg-slate-800'}>Route3</NavLink>
+        <NavLink to={"/addScholarship"} className={'dark:hover:bg-slate-800'}>Add Scholarship</NavLink>
       </li>
       <li className="text-lg font-bold">
-        <NavLink to={"/route4"} className={'dark:hover:bg-slate-800'}>Route4</NavLink>
+        <NavLink to={"/userDashboard"} className={'dark:hover:bg-slate-800'}>User Dashboard</NavLink>
       </li>
       <li className="text-lg font-bold">
-        <NavLink to={"/privateInfo"} className={'dark:hover:bg-slate-800'}>Private Info</NavLink>
+        <NavLink to={"/adminDashboard"} className={'dark:hover:bg-slate-800'}>Admin Dashboard</NavLink>
       </li>
 
       {users?.email ? (
@@ -125,11 +125,11 @@ const Navbar = () => {
                 </div>
                 
                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 dark:bg-[#0a1020] rounded-box z-30 w-44 px-2 py-5 border dark:border-none text-center text-base font-bold space-y-3 -right-14">
-                <li className="px-3 border-b pb-4">{users?.displayName}</li>
+                <li className="px-3 text-black dark:text-white border-b pb-4">{users?.displayName}</li>
                 <li className="px-3">
                   <button
                     onClick={handleSignOut}
-                    className="btn bg-[#010313] dark:bg-base-200 dark:text-black dark:hover:bg-base-300 hover:bg-[#161f2c] text-white text-lg font-bold min-w-28"
+                    className="btn border-none bg-[#010313] dark:bg-base-200 dark:text-black dark:hover:bg-base-300 hover:bg-[#161f2c] text-white text-lg font-bold min-w-28"
                   >
                     Sign Out
                   </button>
@@ -140,13 +140,13 @@ const Navbar = () => {
           ) : (
             <div className="sm:flex gap-2.5 hidden">
               <Link to={"/login"}>
-                <button className="btn bg-[#010313] dark:bg-base-200 dark:text-black dark:hover:bg-base-300 hover:bg-[#161f2c] text-white text-lg font-bold min-w-28">
+                <button className="btn border-none bg-[#010313] dark:bg-base-200 dark:text-black dark:hover:bg-base-300 hover:bg-[#161f2c] text-white text-lg font-bold min-w-28">
                   Sign In
                 </button>
               </Link>
 
               <Link to={"/register"}>
-                <button className="btn bg-[#010313] dark:bg-base-200 dark:text-black dark:hover:bg-base-300 hover:bg-[#161f2c] text-white text-lg font-bold min-w-28">
+                <button className="btn border-none bg-[#010313] dark:bg-base-200 dark:text-black dark:hover:bg-base-300 hover:bg-[#161f2c] text-white text-lg font-bold min-w-28">
                   Sign Up
                 </button>
               </Link>
@@ -173,7 +173,7 @@ const Navbar = () => {
 
             <ul
               tabIndex={0}
-              className="z-20 dark:bg-[#0a1020] right-2 py-4 menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow gap-2"
+              className="z-20 text-black dark:text-white dark:bg-[#0a1020] right-2 py-4 menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow gap-2"
             >
               {links}
             </ul>

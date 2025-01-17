@@ -12,7 +12,7 @@ const Home = () => {
           <Navbar></Navbar>
         </div>
         {/* banner */}
-        <div className="pb-1 px-3">
+        <div className="px-3">
           <Banner></Banner>
         </div>
       </header>

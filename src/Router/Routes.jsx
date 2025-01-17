@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import PrivateRouter from "./PrivateRouter";
 import PrivateInfo from "../Pages/Private/PrivateInfo";
 import Home from "../Pages/Home/Home";
+import AddScholarship from "../Pages/AddScholarship/AddScholarship";
 
 const Routes = createBrowserRouter([
   {
@@ -18,15 +19,23 @@ const Routes = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/route2",
+        path: "/allScholarship",
         element: (
           <PrivateRouter>
-            <h1>Route2 Page</h1>
+            <h1>All Scholarship Page</h1>
           </PrivateRouter>
         ),
       },
       {
-        path: "/route3",
+        path: "/addScholarship",
+        element: (
+          <PrivateRouter>
+            <AddScholarship></AddScholarship>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/userDashboard",
         element: (
           <PrivateRouter>
             <h1>Route3 Page</h1>
@@ -34,28 +43,20 @@ const Routes = createBrowserRouter([
         ),
       },
       {
-        path: "/route4",
+        path: "/adminDashboard",
         element: (
           <PrivateRouter>
-            <h1>Route4 Page</h1>
-          </PrivateRouter>
-        ),
-      },
-      {
-        path: "/privateInfo",
-        element: (
-          <PrivateRouter>
-            <PrivateInfo></PrivateInfo>,
+            <PrivateInfo></PrivateInfo>
           </PrivateRouter>
         ),
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: <Login></Login>
       },
       {
         path: "/register",
-        element: <Register></Register>,
+        element: <Register></Register>
       },
     ],
   },

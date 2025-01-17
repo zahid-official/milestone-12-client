@@ -7,7 +7,7 @@ const MainLayout = () => {
   return (
     <div className="duration-500 dark:bg-[#010313]  dark:text-white">
       <header>
-        {location.pathname === '/' || <Navbar></Navbar>}
+        {(location.pathname === '/login' || location.pathname ==='/register') && <Navbar></Navbar>}
       </header>
 
       <main className="min-h-[45vh]">
