@@ -39,7 +39,7 @@ const Navbar = () => {
         <NavLink to={"/addScholarship"} className={'dark:hover:bg-slate-800'}>Add Scholarship</NavLink>
       </li>
       <li className="text-lg font-bold">
-        <NavLink to={"/userDashboard"} className={'dark:hover:bg-slate-800'}>User Dashboard</NavLink>
+        <NavLink to={"/dashboard/userDashboard"} className={'dark:hover:bg-slate-800'}>User Dashboard</NavLink>
       </li>
       <li className="text-lg font-bold">
         <NavLink to={"/adminDashboard"} className={'dark:hover:bg-slate-800'}>Admin Dashboard</NavLink>

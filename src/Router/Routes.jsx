@@ -7,6 +7,11 @@ import PrivateRouter from "./PrivateRouter";
 import PrivateInfo from "../Pages/Private/PrivateInfo";
 import Home from "../Pages/Home/Home";
 import AddScholarship from "../Pages/AddScholarship/AddScholarship";
+import DashboardLayout from "../Layout/DashboardLayout";
+import UserDashboard from "../Pages/UserDashboard/UserDashboard";
+import MyProfile from "../Pages/UserDashboard/MyProfile";
+import MyApplications from "../Pages/UserDashboard/MyApplications";
+import MyReviews from "../Pages/UserDashboard/MyReviews";
 
 const Routes = createBrowserRouter([
   {
@@ -35,14 +40,6 @@ const Routes = createBrowserRouter([
         ),
       },
       {
-        path: "/userDashboard",
-        element: (
-          <PrivateRouter>
-            <h1>Route3 Page</h1>
-          </PrivateRouter>
-        ),
-      },
-      {
         path: "/adminDashboard",
         element: (
           <PrivateRouter>
@@ -52,11 +49,36 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "/register",
-        element: <Register></Register>
+        element: <Register></Register>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    errorElement: <Error></Error>,
+    children: [
+      {
+        path: "userDashboard",
+        element: <UserDashboard></UserDashboard>,
+        children: [
+          {
+            path: "",
+            element: <MyProfile></MyProfile>
+          },
+          {
+            path: "myApplications",
+            element: <MyApplications></MyApplications>
+          },
+          {
+            path: "myReviews",
+            element: <MyReviews></MyReviews>
+          },
+        ]
       },
     ],
   },
