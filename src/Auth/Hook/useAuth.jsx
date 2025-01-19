@@ -4,6 +4,6 @@ import ContextAPI from "../Context/ContextAPI";
 
 const useAuth = () => {
     const context = useContext(ContextAPI)
-    return context
+    return context;
 };
 export default useAuth;

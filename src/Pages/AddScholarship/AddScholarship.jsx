@@ -1,5 +1,6 @@
 import Navbar from "../../Shared/Navbar";
 import PageTitle from "../../Shared/PageTitle";
+import Scholarship from "./Scholarship";
 
 const AddScholarship = () => {
   return (
@@ -20,6 +21,7 @@ const AddScholarship = () => {
       </div>
 
       {/* scholarship */}
+      <Scholarship></Scholarship>
     </>
   );
 };

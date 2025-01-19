@@ -1,19 +1,19 @@
 import { useEffect } from "react";
-import useAxios from "../../Auth/Hook/useAxios";
+import useAxiosSecure from "../../Auth/Hook/useAxiosSecure";
 import useAuth from "../../Auth/Hook/useAuth";
 
 
 const PrivateInfo = () => {
-    // useAxios Hook
-    const axiosInstance = useAxios();
+    // useAxiosSecure Hook
+    const axiosSecure = useAxiosSecure();
     // useContenxt 
     const {users} = useAuth();
     const email = users?.email;
 
     useEffect(() => {
-        axiosInstance.get(`/privateInfo/${email}`)
+        axiosSecure.get(`/privateInfo/${email}`)
         .then(res => console.log(res.data))
-    },[axiosInstance, email])
+    },[axiosSecure, email])
 
     return (
         <div>
