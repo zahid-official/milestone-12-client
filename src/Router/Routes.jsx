@@ -35,7 +35,7 @@ const Routes = createBrowserRouter([
         ),
       },
       {
-        path: "/adminDashboard",
+        path: "/private",
         element: (
           <PrivateRouter>
             <PrivateInfo></PrivateInfo>

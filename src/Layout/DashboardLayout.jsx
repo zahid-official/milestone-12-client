@@ -72,8 +72,8 @@ const DashboardLayout = () => {
                 </>
               )}
 
-              {/* moderator */}
-              {moderator && (
+              {/* moderator & admin */}
+              {(moderator || admin) && (
                 <>
                   <li>
                     <NavLink to="/dashboard/manageReviews">All Reviews</NavLink>
@@ -93,33 +93,14 @@ const DashboardLayout = () => {
                       Applied Scholarships
                     </NavLink>
                   </li>
-                </>
-              )}
-
-              {/* admin */}
-              {admin && (
-                <>
-                  <li>
-                    <NavLink to="/dashboard/manageReviews">All Reviews</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/allScholarships">
-                      All Scholarships
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/addScholarship">
-                      Add Scholarship
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/appliedScholarships">
-                      Applied Scholarships
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/manageUsers">Manage Users</NavLink>
-                  </li>
+                  
+                  {admin && (
+                    <li>
+                      <NavLink to="/dashboard/manageUsers">
+                        Manage Users
+                      </NavLink>
+                    </li>
+                  )}
                 </>
               )}
             </ul>

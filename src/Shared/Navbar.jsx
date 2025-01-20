@@ -36,13 +36,10 @@ const Navbar = () => {
         <NavLink to={"/allScholarship"} className={'dark:hover:bg-slate-800'}>All Scholarship</NavLink>
       </li>
       <li className="text-lg font-bold">
-        <NavLink to={"/addScholarship"} className={'dark:hover:bg-slate-800'}>Add Scholarship</NavLink>
+        <NavLink to={"/dashboard"} className={'dark:hover:bg-slate-800'}>Dashboard</NavLink>
       </li>
       <li className="text-lg font-bold">
-        <NavLink to={"/dashboard"} className={'dark:hover:bg-slate-800'}>User Dashboard</NavLink>
-      </li>
-      <li className="text-lg font-bold">
-        <NavLink to={"/adminDashboard"} className={'dark:hover:bg-slate-800'}>Admin Dashboard</NavLink>
+        <NavLink to={"/private"} className={'dark:hover:bg-slate-800'}>Private Info</NavLink>
       </li>
 
       {users?.email ? (
