@@ -14,6 +14,7 @@ import AllScholarships from "../Pages/Dashboard/AllScholarships";
 import AppliedScholarships from "../Pages/Dashboard/AppliedScholarships";
 import ManageReviews from "../Pages/Dashboard/ManageReviews";
 import ManageUsers from "../Pages/Dashboard/ManageUsers";
+import AdminRouter from "./AdminRouter";
 
 const Routes = createBrowserRouter([
   {
@@ -70,19 +71,23 @@ const Routes = createBrowserRouter([
       },
       {
         path: "allScholarships",
-        element: <AllScholarships></AllScholarships>
+        element: <AllScholarships></AllScholarships>,
       },
       {
         path: "appliedScholarships",
-        element: <AppliedScholarships></AppliedScholarships>
+        element: <AppliedScholarships></AppliedScholarships>,
       },
       {
         path: "manageReviews",
-        element: <ManageReviews></ManageReviews>
+        element: <ManageReviews></ManageReviews>,
       },
       {
         path: "manageUsers",
-        element: <ManageUsers></ManageUsers>
+        element: (
+          <AdminRouter>
+            <ManageUsers></ManageUsers>
+          </AdminRouter>
+        ),
       },
     ],
   },
