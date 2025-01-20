@@ -16,6 +16,7 @@ import ManageReviews from "../Pages/Dashboard/ManageReviews";
 import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import AdminRouter from "./AdminRouter";
 import ModeratorRouter from "./ModeratorRouter";
+import UserRouter from "./UserRouter";
 
 const Routes = createBrowserRouter([
   {
@@ -60,11 +61,19 @@ const Routes = createBrowserRouter([
       },
       {
         path: "myApplications",
-        element: <MyApplications></MyApplications>,
+        element: (
+          <UserRouter>
+            <MyApplications></MyApplications>
+          </UserRouter>
+        ),
       },
       {
         path: "myReviews",
-        element: <MyReviews></MyReviews>,
+        element: (
+          <UserRouter>
+            <MyReviews></MyReviews>
+          </UserRouter>
+        ),
       },
       {
         path: "addScholarship",
