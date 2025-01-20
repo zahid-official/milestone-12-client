@@ -1,11 +1,26 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
 
-const ModeratorRouter = () => {
+import { Navigate } from "react-router-dom";
+import useAuth from "../Auth/Hook/useAuth";
+import useRole from "../Auth/Hook/useRole";
+
+const ModeratorRouter = ({ children }) => {
+  // useHooks
+  const { users, loading } = useAuth();
+  const { role, isPending } = useRole();
+
+  if (loading || isPending) {
     return (
-        <div>
-            
-        </div>
+      <div className="flex justify-center py-8">
+        <span className="loading loading-ring loading-lg"></span>
+      </div>
     );
+  }
+
+  if (users?.email && (role?.admin || role?.moderator)) {
+    return children;
+  }
+  return <Navigate to={"/login"} state={'/'}></Navigate>;
 };
 
 export default ModeratorRouter;

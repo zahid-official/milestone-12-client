@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import useAuth from "../Auth/Hook/useAuth";
 import useRole from "../Auth/Hook/useRole";
 
@@ -9,9 +9,6 @@ const AdminRouter = ({children}) => {
     // useHooks
   const { users, loading } = useAuth();
   const {role, isPending} = useRole();
-
-  // useLocation
-  const location = useLocation();
 
   if (loading || isPending) {
     return (
@@ -24,7 +21,7 @@ const AdminRouter = ({children}) => {
   if (users?.email && role?.admin) {
     return children;
   }
-  return <Navigate to={"/login"} state={location?.pathname}></Navigate>;
+  return <Navigate to={"/login"} state={'/'}></Navigate>;
 };
 
 export default AdminRouter;

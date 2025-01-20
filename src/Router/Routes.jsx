@@ -15,6 +15,7 @@ import AppliedScholarships from "../Pages/Dashboard/AppliedScholarships";
 import ManageReviews from "../Pages/Dashboard/ManageReviews";
 import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import AdminRouter from "./AdminRouter";
+import ModeratorRouter from "./ModeratorRouter";
 
 const Routes = createBrowserRouter([
   {
@@ -67,19 +68,35 @@ const Routes = createBrowserRouter([
       },
       {
         path: "addScholarship",
-        element: <AddScholarship></AddScholarship>,
+        element: (
+          <ModeratorRouter>
+            <AddScholarship></AddScholarship>
+          </ModeratorRouter>
+        ),
       },
       {
         path: "allScholarships",
-        element: <AllScholarships></AllScholarships>,
+        element: (
+          <ModeratorRouter>
+            <AllScholarships></AllScholarships>
+          </ModeratorRouter>
+        ),
       },
       {
         path: "appliedScholarships",
-        element: <AppliedScholarships></AppliedScholarships>,
+        element: (
+          <ModeratorRouter>
+            <AppliedScholarships></AppliedScholarships>
+          </ModeratorRouter>
+        ),
       },
       {
         path: "manageReviews",
-        element: <ManageReviews></ManageReviews>,
+        element: (
+          <ModeratorRouter>
+            <ManageReviews></ManageReviews>
+          </ModeratorRouter>
+        ),
       },
       {
         path: "manageUsers",
