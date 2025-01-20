@@ -38,9 +38,6 @@ const Navbar = () => {
       <li className="text-lg font-bold">
         <NavLink to={"/dashboard"} className={'dark:hover:bg-slate-800'}>Dashboard</NavLink>
       </li>
-      <li className="text-lg font-bold">
-        <NavLink to={"/private"} className={'dark:hover:bg-slate-800'}>Private Info</NavLink>
-      </li>
 
       {users?.email ? (
         ""

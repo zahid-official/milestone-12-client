@@ -57,24 +57,15 @@ const AuthProvider = ({ children }) => {
       // jwt token
       const email = usersData?.email;
       if (email) {
-        axios
-          .post(
-            "http://localhost:5000/jwt",
-            { email },
-            { withCredentials: true }
-          )
-          .then((res) => {
-            console.log(res.data);
-            setLoading(false);
-          });
-      } 
-      else {
-        axios
-          .post("http://localhost:5000/jwtRemove", {}, { withCredentials: true })
-          .then((res) => {
-            console.log(res.data);
-            setLoading(false);
-          });
+        axios.post("http://localhost:5000/jwt", { email }).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("token", res.data.token);
+          }
+          setLoading(false);
+        });
+      } else {
+        localStorage.removeItem("token")
+        setLoading(false);
       }
     });
 

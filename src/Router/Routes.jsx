@@ -4,7 +4,6 @@ import Error from "../Pages/Error/Error";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import PrivateRouter from "./PrivateRouter";
-import PrivateInfo from "../Pages/Private/PrivateInfo";
 import Home from "../Pages/Home/Home";
 import AddScholarship from "../Pages/AddScholarship/AddScholarship";
 import DashboardLayout from "../Layout/DashboardLayout";
@@ -31,14 +30,6 @@ const Routes = createBrowserRouter([
         element: (
           <PrivateRouter>
             <h1>All Scholarship Page</h1>
-          </PrivateRouter>
-        ),
-      },
-      {
-        path: "/private",
-        element: (
-          <PrivateRouter>
-            <PrivateInfo></PrivateInfo>
           </PrivateRouter>
         ),
       },

@@ -1,9 +1,14 @@
 import { NavLink, Outlet } from "react-router-dom";
+import useRole from "../Auth/Hook/useRole";
 
 const DashboardLayout = () => {
-  const user = false;
-  const admin = true;
-  const moderator = false;
+  // useHook
+  const { role } = useRole();
+
+  // roles
+  const user = role?.user;
+  const admin = role?.admin;
+  const moderator = role?.moderator;
 
   return (
     <>
@@ -93,7 +98,7 @@ const DashboardLayout = () => {
                       Applied Scholarships
                     </NavLink>
                   </li>
-                  
+
                   {admin && (
                     <li>
                       <NavLink to="/dashboard/manageUsers">

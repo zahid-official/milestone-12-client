@@ -3,9 +3,11 @@ import PageTitle from "../../Shared/PageTitle";
 import { useQuery } from "@tanstack/react-query";
 import { FaTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import useAuth from "../../Auth/Hook/useAuth";
 
 const ManageUsers = () => {
-  // useHook for axiosSecure
+  // useHook
+  const { users: loggedUser } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   // tanstack query
@@ -47,7 +49,7 @@ const ManageUsers = () => {
   // handleRole
   const handleRole = (id, role) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: `Sure to make ${role}!`,
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
@@ -57,7 +59,8 @@ const ManageUsers = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.patch(`/users/role/${id}`, { role }).then((res) => {
-          if (res.data.modifiedCount) {
+          if (res.data.modifiedCount > 0) {
+            refetch();
             Swal.fire({
               title: "Updated!",
               text: "Role has been Updated.",
@@ -107,6 +110,10 @@ const ManageUsers = () => {
                 <td>{user?.email}</td>
                 <td>
                   <select
+                    style={{
+                      pointerEvents:
+                        loggedUser.email === user?.email ? "none" : "auto",
+                    }}
                     defaultValue={user?.role ? user.role : ""}
                     onChange={(e) => handleRole(user._id, e.target.value)}
                     className="select select-bordered"
@@ -120,6 +127,10 @@ const ManageUsers = () => {
                 </td>
                 <td className="flex items-center">
                   <button
+                    style={{
+                      pointerEvents:
+                        loggedUser.email === user?.email ? "none" : "auto",
+                    }}
                     onClick={() => handleDelete(user._id)}
                     className="btn p-2.5 btn-ghost text-red-500"
                   >
