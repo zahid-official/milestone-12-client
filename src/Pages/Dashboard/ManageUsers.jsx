@@ -46,9 +46,27 @@ const ManageUsers = () => {
 
   // handleRole
   const handleRole = (id, role) => {
-    axiosSecure
-      .patch(`/users/role/${id}`, { role })
-      .then((res) => console.log(res.data));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Update Role",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/users/role/${id}`, { role }).then((res) => {
+          if (res.data.modifiedCount) {
+            Swal.fire({
+              title: "Updated!",
+              text: "Role has been Updated.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
   };
 
   return (
