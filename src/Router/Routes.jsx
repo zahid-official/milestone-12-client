@@ -8,10 +8,13 @@ import PrivateInfo from "../Pages/Private/PrivateInfo";
 import Home from "../Pages/Home/Home";
 import AddScholarship from "../Pages/AddScholarship/AddScholarship";
 import DashboardLayout from "../Layout/DashboardLayout";
-import UserDashboard from "../Pages/UserDashboard/UserDashboard";
-import MyProfile from "../Pages/UserDashboard/MyProfile";
-import MyApplications from "../Pages/UserDashboard/MyApplications";
-import MyReviews from "../Pages/UserDashboard/MyReviews";
+import MyProfile from "../Pages/Dashboard/MyProfile";
+import MyApplications from "../Pages/Dashboard/MyApplications";
+import MyReviews from "../Pages/Dashboard/MyReviews";
+import AllScholarships from "../Pages/Dashboard/AllScholarships";
+import AppliedScholarships from "../Pages/Dashboard/AppliedScholarships";
+import ManageReviews from "../Pages/Dashboard/ManageReviews";
+import ManageUsers from "../Pages/Dashboard/ManageUsers";
 
 const Routes = createBrowserRouter([
   {
@@ -28,14 +31,6 @@ const Routes = createBrowserRouter([
         element: (
           <PrivateRouter>
             <h1>All Scholarship Page</h1>
-          </PrivateRouter>
-        ),
-      },
-      {
-        path: "/addScholarship",
-        element: (
-          <PrivateRouter>
-            <AddScholarship></AddScholarship>
           </PrivateRouter>
         ),
       },
@@ -59,26 +54,44 @@ const Routes = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRouter>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRouter>
+    ),
     errorElement: <Error></Error>,
     children: [
       {
-        path: "userDashboard",
-        element: <UserDashboard></UserDashboard>,
-        children: [
-          {
-            path: "",
-            element: <MyProfile></MyProfile>
-          },
-          {
-            path: "myApplications",
-            element: <MyApplications></MyApplications>
-          },
-          {
-            path: "myReviews",
-            element: <MyReviews></MyReviews>
-          },
-        ]
+        path: "",
+        element: <MyProfile></MyProfile>,
+      },
+      {
+        path: "myApplications",
+        element: <MyApplications></MyApplications>,
+      },
+      {
+        path: "myReviews",
+        element: <MyReviews></MyReviews>,
+      },
+      {
+        path: "addScholarship",
+        element: <AddScholarship></AddScholarship>,
+      },
+      {
+        path: "allScholarships",
+        element: <AllScholarships></AllScholarships>
+      },
+      {
+        path: "appliedScholarships",
+        element: <AppliedScholarships></AppliedScholarships>
+      },
+      {
+        path: "manageReviews",
+        element: <ManageReviews></ManageReviews>
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>
       },
     ],
   },

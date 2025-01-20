@@ -1,25 +1,20 @@
 import PageTitle from "../../Shared/PageTitle";
-import Scholarship from "./Scholarship";
 
-const AddScholarship = () => {
+const ManageUsers = () => {
   return (
-    <>
+    <div>
       {/* pageTitle */}
       <div className="bg-[#0f252a] text-white bg-[url(assets/bg.webp)] bg-cover bg-center bg-no-repeat">
-
         <div className="p-20">
           <PageTitle
-            heading1={"Add"}
-            heading2={"Scholarship"}
+            heading1={"Manage"}
+            heading2={"Users"}
             subHeading={"Dashboard"}
           ></PageTitle>
         </div>
       </div>
-
-      {/* scholarship */}
-      <Scholarship></Scholarship>
-    </>
+    </div>
   );
 };
 
-export default AddScholarship;
+export default ManageUsers;
