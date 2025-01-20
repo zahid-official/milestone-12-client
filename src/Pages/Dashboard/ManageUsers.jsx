@@ -44,6 +44,13 @@ const ManageUsers = () => {
     });
   };
 
+  // handleRole
+  const handleRole = (id, role) => {
+    axiosSecure
+      .patch(`/users/role/${id}`, { role })
+      .then((res) => console.log(res.data));
+  };
+
   return (
     <div>
       {/* pageTitle */}
@@ -80,7 +87,19 @@ const ManageUsers = () => {
                 <th>{idx + 1}</th>
                 <td>{user?.name}</td>
                 <td>{user?.email}</td>
-                <td>Admin</td>
+                <td>
+                  <select
+                    defaultValue={user?.role ? user.role : ""}
+                    onChange={(e) => handleRole(user._id, e.target.value)}
+                    className="select select-bordered"
+                  >
+                    <option value="" disabled>
+                      User
+                    </option>
+                    <option value="Admin">Admin</option>
+                    <option value="Moderator">Moderator</option>
+                  </select>
+                </td>
                 <td className="flex items-center">
                   <button
                     onClick={() => handleDelete(user._id)}
