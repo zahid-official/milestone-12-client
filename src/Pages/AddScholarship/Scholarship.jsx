@@ -17,7 +17,7 @@ const Scholarship = () => {
   const axiosSecure = useAxiosSecure();
 
   // handleSubmit
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset  } = useForm();
   const onSubmit = async (formData) => {
 
     // upload image in imgbb and get url
@@ -75,6 +75,7 @@ const Scholarship = () => {
       if(scholarshipRes.data.insertedId){
         console.log(scholarshipRes.data);
         toast.success('Scholarship Added Successfully');
+        reset();
       }
     }
   };

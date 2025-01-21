@@ -1,6 +1,7 @@
 import Navbar from "../../Shared/Navbar";
 import Banner from "./Banner";
 import Feature from "./Feature";
+import TopScholarship from "./TopScholarship";
 
 const Home = () => {
   return (
@@ -18,8 +19,13 @@ const Home = () => {
       </header>
 
       {/* Feature */}
-      <section className="bg-[#f0eee6] py-44">
+      <section className="bg-[#f4f1eb] py-44">
         <Feature></Feature>
+      </section>
+
+      {/* top scholarship */}
+      <section>
+        <TopScholarship></TopScholarship>
       </section>
     </>
   );
