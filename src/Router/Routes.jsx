@@ -17,6 +17,8 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import AdminRouter from "./AdminRouter";
 import ModeratorRouter from "./ModeratorRouter";
 import UserRouter from "./UserRouter";
+import ScholarshipDetails from "../Pages/Home/ScholarshipDetails";
+import Payment from "../Pages/Home/Payment";
 
 const Routes = createBrowserRouter([
   {
@@ -35,6 +37,20 @@ const Routes = createBrowserRouter([
             <h1>All Scholarship Page</h1>
           </PrivateRouter>
         ),
+      },
+      {
+        path: "/scholarshipDetails/:id",
+        element: (
+          <PrivateRouter>
+            <ScholarshipDetails></ScholarshipDetails>
+          </PrivateRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/scholarshipDetails/${params.id}`),
+      },
+      {
+        path: "/payment",
+        element: <Payment></Payment>,
       },
       {
         path: "/login",
