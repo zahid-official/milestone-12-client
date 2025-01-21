@@ -1,70 +1,91 @@
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import useAuth from "../../Auth/Hook/useAuth";
+import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../Auth/Hook/useAxiosPublic";
+import useAxiosSecure from "../../Auth/Hook/useAxiosSecure";
+import { toast } from "react-toastify";
+
+// imgbb for upload image
+const imgbb_key = import.meta.env.VITE_Imgbb_Key;
+const imgbb_api = `https://api.imgbb.com/1/upload?key=${imgbb_key}`;
 
 const Scholarship = () => {
-  // useContext
+  // useHooks
   const { users } = useAuth();
-
-  // imgbb for upload image
-  // const imgbb_key = import.meta.env.VITE_Imgbb_Key;
-  // const imgbb_api = `https://api.imgbb.com/1/upload${imgbb_key}`;
+  const axiosPublic = useAxiosPublic()
+  const axiosSecure = useAxiosSecure();
 
   // handleSubmit
-  const handleSubmit = async(event) => {
-    event.preventDefault();
+  const { register, handleSubmit } = useForm();
+  const onSubmit = async (formData) => {
 
-    // upload image to imgbb
-    // const res = await axios.post(imgbb_api)
+    // upload image in imgbb and get url
+    const data = new FormData();
+    data.append("image", formData.universityLogo[0]);
 
-    const universityName = event.target.universityName.value;
-    const universityCountry = event.target.universityCountry.value;
-    const universityCity = event.target.universityCity.value;
-    const universityRank = event.target.universityRank.value;
-    const serviceCharge = event.target.serviceCharge.value;
-    const tuitionFee = event.target.tuitionFee.value;
-    const stipend = event.target.stipend.value;
-    const universityLogo = event.target.universityLogo.value;
+    const res = await axiosPublic.post(imgbb_api, data, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
 
-    const scholarshipName = event.target.scholarshipName.value;
-    const applicationFees = event.target.applicationFees.value;
-    const subjectCategory = event.target.subjectCategory.value;
-    const scholarshipCategory = event.target.scholarshipCategory.value;
-    const degree = event.target.degree.value;
-    const deadline = event.target.deadline.value;
-    const userEmail = users?.email;
-    const postedDate = event.target.postedDate.value;
-    const description = event.target.description.value;
-
-    const addVisaData = {
-      universityName,
-      universityCountry,
-      universityCity,
-      universityRank,
-      serviceCharge,
-      tuitionFee,
-      stipend,
-      universityLogo,
-
-      scholarshipName,
-      subjectCategory,
-      scholarshipCategory,
+    const universityLogo = res.data.data.display_url;
+    const {
       applicationFees,
-      degree,
       deadline,
-      userEmail,
+      degree,
+      description,
       postedDate,
-      description
+      postedUser,
+      scholarshipCategory,
+      scholarshipName,
+      serviceCharge,
+      stipend,
+      subjectCategory,
+      tuitionFee,
+      universityCity,
+      universityCountry,
+      universityName,
+      universityRank,
+    } = formData;
+    
+    const scholarshipDetails = {
+      applicationFees: parseInt(applicationFees),
+      deadline,
+      degree,
+      description,
+      postedDate,
+      postedUser,
+      scholarshipCategory,
+      scholarshipName,
+      serviceCharge: parseInt(serviceCharge),
+      stipend: parseInt(stipend),
+      subjectCategory,
+      tuitionFee: parseInt(tuitionFee),
+      universityCity,
+      universityLogo,
+      universityCountry,
+      universityName,
+      universityRank: parseInt(universityRank),
     };
 
-    console.log(addVisaData);
+    if(res.data.success){
+      const scholarshipRes = await axiosSecure.post('/addScholarship', scholarshipDetails);
+      if(scholarshipRes.data.insertedId){
+        console.log(scholarshipRes.data);
+        toast.success('Scholarship Added Successfully');
+      }
+    }
   };
-  
 
   return (
     <>
       <div className="px-5 sm:w-11/12 mx-auto py-36">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-10">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-10"
+        >
           {/* top */}
           <div className="flex items-center justify-center xl:flex-row flex-col gap-10">
             {/* leftside */}
@@ -90,17 +111,17 @@ const Scholarship = () => {
                 <input
                   type="text"
                   name="universityName"
+                  {...register("universityName", { required: true })}
                   placeholder="University Name"
                   className="input input-bordered w-full text-base font-semibold"
-                  required
                 />
 
                 <input
                   type="text"
                   name="universityCountry"
+                  {...register("universityCountry", { required: true })}
                   placeholder="University Country"
                   className="input input-bordered w-full text-base font-semibold"
-                  required
                 />
               </div>
 
@@ -109,14 +130,15 @@ const Scholarship = () => {
                 <input
                   type="text"
                   name="universityCity"
+                  {...register("universityCity", { required: true })}
                   placeholder="University City"
                   className="input input-bordered w-full text-base font-semibold"
-                  required
                 />
 
                 <input
                   type="number"
                   name="universityRank"
+                  {...register("universityRank")}
                   placeholder="University Rank (Number)"
                   className="input input-bordered w-full text-base font-semibold"
                   required
@@ -128,6 +150,7 @@ const Scholarship = () => {
                 <input
                   type="number"
                   name="serviceCharge"
+                  {...register("serviceCharge")}
                   placeholder="Service Charge (Number)"
                   className="input input-bordered w-full text-base font-semibold"
                   required
@@ -136,6 +159,7 @@ const Scholarship = () => {
                 <input
                   type="number"
                   name="tuitionFee"
+                  {...register("tuitionFee")}
                   placeholder="Tuition Fees (Number)"
                   className="input input-bordered w-full text-base font-semibold"
                 />
@@ -146,6 +170,7 @@ const Scholarship = () => {
                 <input
                   type="number"
                   name="stipend"
+                  {...register("stipend")}
                   placeholder="Stipend (Number)"
                   className="input input-bordered w-full text-base font-semibold"
                 />
@@ -153,6 +178,7 @@ const Scholarship = () => {
                 <input
                   type="file"
                   name="universityLogo"
+                  {...register("universityLogo")}
                   className="file-input w-full border border-gray-300"
                   required
                 />
@@ -182,6 +208,7 @@ const Scholarship = () => {
                 <input
                   type="text"
                   name="scholarshipName"
+                  {...register("scholarshipName")}
                   placeholder="Scholarship Name"
                   className="input input-bordered w-full text-base font-semibold"
                   required
@@ -190,6 +217,7 @@ const Scholarship = () => {
                 <input
                   type="number"
                   name="applicationFees"
+                  {...register("applicationFees")}
                   placeholder="Application Fees (Number)"
                   className="input input-bordered w-full text-base font-semibold"
                   required
@@ -200,11 +228,12 @@ const Scholarship = () => {
               <div className="flex gap-4 md:flex-row flex-col">
                 <select
                   className="select select-bordered w-full text-base font-semibold"
-                  required="required"
                   name="subjectCategory"
+                  {...register("subjectCategory")}
+                  required="required"
                   defaultValue=""
                 >
-                  <option value="" disabled >
+                  <option value="" disabled>
                     Subject Category
                   </option>
                   <option value="Doctor">Doctor</option>
@@ -216,6 +245,7 @@ const Scholarship = () => {
                   className="select select-bordered w-full text-base font-semibold"
                   required="required"
                   name="degree"
+                  {...register("degree")}
                   defaultValue=""
                 >
                   <option value="" disabled>
@@ -232,6 +262,7 @@ const Scholarship = () => {
                 <select
                   className="select select-bordered w-full text-base font-semibold"
                   name="scholarshipCategory"
+                  {...register("scholarshipCategory")}
                   required="required"
                   defaultValue=""
                 >
@@ -248,6 +279,7 @@ const Scholarship = () => {
                   <input
                     type="date"
                     name="deadline"
+                    {...register("deadline")}
                     className="grow"
                     required
                   />
@@ -263,6 +295,7 @@ const Scholarship = () => {
                     readOnly
                     defaultValue={users?.email}
                     name="postedUser"
+                    {...register("postedUser")}
                     className="grow"
                   />
                 </label>
@@ -272,6 +305,7 @@ const Scholarship = () => {
                   <input
                     type="date"
                     name="postedDate"
+                    {...register("postedDate")}
                     className="grow"
                     required
                   />
@@ -285,6 +319,7 @@ const Scholarship = () => {
             <textarea
               rows={"4"}
               name="description"
+              {...register("description")}
               placeholder="Description..."
               className="textarea textarea-bordered textarea-lg w-full"
               required
