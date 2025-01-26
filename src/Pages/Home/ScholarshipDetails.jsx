@@ -7,6 +7,7 @@ const ScholarshipDetails = () => {
   const loadedData = useLoaderData();
 
   const {
+    _id: id,
     universityName,
     universityLogo,
     scholarshipCategory,
@@ -86,7 +87,7 @@ const ScholarshipDetails = () => {
               {universityCity}, {universityCountry}
             </p>
 
-            <Link to={'/payment'}>
+            <Link to={`/payment/${id}`}>
               <button className="btn font-bold mt-10 px-12 h-16 bg-[#193b42] hover:bg-[#102930] text-lg text-white">
                 <span className="z-10">Apply for Scholarship</span>
               </button>

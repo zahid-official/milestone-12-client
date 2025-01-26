@@ -49,8 +49,14 @@ const Routes = createBrowserRouter([
           fetch(`http://localhost:5000/scholarshipDetails/${params.id}`),
       },
       {
-        path: "/payment",
-        element: <Payment></Payment>,
+        path: "/payment/:id",
+        element: (
+          <PrivateRouter>
+            <Payment></Payment>
+          </PrivateRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/scholarshipDetails/${params.id}`)
       },
       {
         path: "/login",
