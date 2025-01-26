@@ -7,6 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckOut from "./CheckOut";
 import { useState } from "react";
+import ApplicantDetails from "./ApplicantDetails";
 
 // stripe
 const stripePromise = loadStripe(import.meta.env.VITE_Stipe);
@@ -16,7 +17,8 @@ const Payment = () => {
   const loadedData = useLoaderData();
 
   // state for payment
-  const [payment, setPayment] = useState(false);
+  const [payment, setPayment] = useState(true);
+  // change this value into false
 
   const {
     universityName,
@@ -51,7 +53,9 @@ const Payment = () => {
       {/* checkout */}
       <section className=" py-36 px-6">
         {payment ? (
-          <></>
+          <div>
+            <ApplicantDetails scholarshipData={loadedData}></ApplicantDetails>
+          </div>
         ) : (
           <div className="shadow  max-w-screen-sm mx-auto  px-12 py-16">
             {/* back */}
