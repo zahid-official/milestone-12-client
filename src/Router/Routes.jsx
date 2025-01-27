@@ -16,7 +16,6 @@ import ManageReviews from "../Pages/Dashboard/ManageReviews";
 import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import AdminRouter from "./AdminRouter";
 import ModeratorRouter from "./ModeratorRouter";
-import UserRouter from "./UserRouter";
 import ScholarshipDetails from "../Pages/Home/ScholarshipDetails";
 import Payment from "../Pages/Home/Payment";
 
@@ -56,7 +55,7 @@ const Routes = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/scholarshipDetails/${params.id}`)
+          fetch(`http://localhost:5000/scholarshipDetails/${params.id}`),
       },
       {
         path: "/login",
@@ -83,19 +82,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: "myApplications",
-        element: (
-          <UserRouter>
-            <MyApplications></MyApplications>
-          </UserRouter>
-        ),
+        element: <MyApplications></MyApplications>,
       },
       {
         path: "myReviews",
-        element: (
-          <UserRouter>
-            <MyReviews></MyReviews>
-          </UserRouter>
-        ),
+        element: <MyReviews></MyReviews>,
       },
       {
         path: "addScholarship",

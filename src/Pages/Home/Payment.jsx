@@ -17,8 +17,7 @@ const Payment = () => {
   const loadedData = useLoaderData();
 
   // state for payment
-  const [payment, setPayment] = useState(true);
-  // change this value into false
+  const [payment, setPayment] = useState(false);
 
   const {
     universityName,

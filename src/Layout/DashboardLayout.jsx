@@ -19,7 +19,7 @@ const DashboardLayout = () => {
             {/* bar-icon */}
             <label
               htmlFor="my-drawer-2"
-              className="btn btn-primary drawer-button lg:hidden"
+              className="btn bg-transparent absolute top-4 left-3 text-white hover:text-black drawer-button lg:hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,6 +80,16 @@ const DashboardLayout = () => {
               {/* moderator & admin */}
               {(moderator || admin) && (
                 <>
+                  <li>
+                    <NavLink to="/dashboard/myReviews">My Reviews</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/dashboard/myApplications">
+                      My Applications
+                    </NavLink>
+                  </li>
+
+                  
                   <li>
                     <NavLink to="/dashboard/manageReviews">All Reviews</NavLink>
                   </li>
