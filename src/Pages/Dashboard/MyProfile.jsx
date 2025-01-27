@@ -1,23 +1,19 @@
 import useAppliedScholarships from "../../Auth/Hook/useAppliedScholarships";
 import useAuth from "../../Auth/Hook/useAuth";
+import useRole from "../../Auth/Hook/useRole";
 import PageTitle from "../../Shared/PageTitle";
+import Chart from "./Chart";
 import profileBg from "/assets/profile.webp";
 
 const MyProfile = () => {
   // useHooks
+  const { role } = useRole();
   const { users } = useAuth();
   const { appliedScholarships } = useAppliedScholarships();
 
   const { email: userEmail, displayName, photoURL } = users || {};
-  const {
-    email,
-    name,
-    applicantPhoto,
-    applicantDistrict,
-    applicantCountry,
-  } = appliedScholarships[0] || {};
-
-  console.log(appliedScholarships[0]);
+  const { email, name, applicantPhoto, applicantDistrict, applicantCountry } =
+    appliedScholarships[0] || {};
 
   return (
     <div>
@@ -33,7 +29,7 @@ const MyProfile = () => {
       </div>
 
       {/* profile */}
-      <div className="px-6 py-24 grid grid-cols-3">
+      <div className="px-4 py-24 grid xl:grid-cols-3 gap-6">
         {/* card */}
         <div className="border pb-14 w-full max-w-sm mx-auto flex flex-col items-center gap-2 justify-center rounded-2xl">
           <div className="h-64 w-full">
@@ -58,6 +54,13 @@ const MyProfile = () => {
           <p className="-mt-1.5 text-sm">
             {applicantDistrict}, {applicantCountry}
           </p>
+          {(role.admin || role.moderator) && (
+            <p className="mt-0.5">
+              <span className="font-semibold">
+                Role: 
+              </span> {role.admin && "Admin"} {role.moderator && "Moderator"}
+            </p>
+          )}
 
           <div className="flex justify-around mt-6 w-full max-w-80">
             <div className="flex flex-col items-center justify-center">
@@ -76,8 +79,8 @@ const MyProfile = () => {
           </div>
         </div>
 
-        <div>
-
+        <div className="h-full xl:col-span-2 2xl:mr-10">
+          <Chart></Chart>
         </div>
       </div>
     </div>
