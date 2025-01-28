@@ -45,7 +45,7 @@ const Routes = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/scholarshipDetails/${params.id}`),
+          fetch(`https://edify-server.vercel.app/scholarshipDetails/${params.id}`),
       },
       {
         path: "/payment/:id",
@@ -55,7 +55,7 @@ const Routes = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/scholarshipDetails/${params.id}`),
+          fetch(`https://edify-server.vercel.app/scholarshipDetails/${params.id}`),
       },
       {
         path: "/login",

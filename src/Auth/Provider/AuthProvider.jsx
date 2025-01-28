@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
       // jwt token
       const email = usersData?.email;
       if (email) {
-        axios.post("http://localhost:5000/jwt", { email }).then((res) => {
+        axios.post("https://edify-server.vercel.app/jwt", { email }).then((res) => {
           if (res.data.token) {
             localStorage.setItem("token", res.data.token);
           }

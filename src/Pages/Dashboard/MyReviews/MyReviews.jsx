@@ -1,19 +1,15 @@
-
 import useAppliedScholarships from "../../../Auth/Hook/useAppliedScholarships";
 import PageTitle from "../../../Shared/PageTitle";
 import Review from "./Review";
-
 
 const MyReviews = () => {
   // useHooks
   const { myReviews } = useAppliedScholarships();
 
-
-
   return (
     <div>
       {/* pageTitle */}
-      <div className="bg-[#0f252a] text-white bg-[url(assets/bg.webp)] bg-cover bg-center bg-no-repeat">
+      <div className="bg-[#0f252a] text-white bg-[url(/assets/bg.webp)] bg-cover bg-center bg-no-repeat">
         <div className="py-20">
           <PageTitle
             heading1={"My"}
@@ -43,10 +39,11 @@ const MyReviews = () => {
                 <th className="text-center">Actions</th>
               </tr>
             </thead>
-            {myReviews.map((review, idx) => (
+            <tbody>
+              {myReviews.map((review, idx) => (
                 <Review key={review._id} review={review} idx={idx}></Review>
-            ))}
-            
+              ))}
+            </tbody>
           </table>
         </div>
       </div>

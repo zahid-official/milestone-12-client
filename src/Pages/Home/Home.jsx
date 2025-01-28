@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       {/* Header */}
-      <header className="bg-[#0f252a] text-white bg-[url(assets/bg.avif)] bg-cover bg-no-repeat">
+      <header className="bg-[#0f252a] text-white bg-[url(/assets/bg.avif)] bg-cover bg-no-repeat">
         {/* navbar */}
         <div className="">
           <Navbar></Navbar>

@@ -17,31 +17,31 @@ const Review = ({ review, idx }) => {
   const [rating, setRating] = useState(review.rating);
 
   // handleDelete
-    const handleDelete = (id) => {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // delete Review
-          axiosSecure.delete(`/deleteMyReview/${id}`).then((res) => {
-            if (res.data.deletedCount > 0) {
-                refetchMyReview();
-              Swal.fire({
-                title: "Deleted!",
-                text: "Review has been deleted.",
-                icon: "success",
-              });
-            }
-          });
-        }
-      });
-    };
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // delete Review
+        axiosSecure.delete(`/deleteMyReview/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetchMyReview();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Review has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
 
   // handleEdit
   const handleReview = async (event) => {
@@ -72,7 +72,7 @@ const Review = ({ review, idx }) => {
   };
 
   return (
-    <tbody>
+    <>
       <tr key={review._id}>
         <th>{idx + 1}</th>
 
@@ -108,66 +108,65 @@ const Review = ({ review, idx }) => {
             <FaTrash size={24}></FaTrash>
           </button>
         </td>
+      </tr>
+      {/* review modal */}
+      <dialog id="editReview" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <form onSubmit={handleReview} className="flex flex-col pb-10">
+            {/* top */}
+            <div className="flex items-center justify-center xl:flex-row flex-col gap-10">
+              <div className="w-full sm:px-8 px-5 sm:py-14 rounded-3xl space-y-8">
+                <h2 className="text-3xl font-bold">Update Review</h2>
 
-        {/* review modal */}
-        <dialog id="editReview" className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box">
-            <form onSubmit={handleReview} className="flex flex-col pb-10">
-              {/* top */}
-              <div className="flex items-center justify-center xl:flex-row flex-col gap-10">
-                <div className="w-full sm:px-8 px-5 sm:py-14 rounded-3xl space-y-8">
-                  <h2 className="text-3xl font-bold">Update Review</h2>
-
-                  {/* rating */}
-                  <div className="space-y-2">
-                    <p>
-                      <Rating
-                        style={{ maxWidth: 180 }}
-                        value={rating}
-                        onChange={setRating}
-                      />
-                    </p>
-                  </div>
-
-                  {/* review date */}
-                  <label className="input w-full text-base font-semibold input-bordered flex items-center gap-2">
-                    Review Date:
-                    <input
-                      type="date"
-                      name="reviewDate"
-                      defaultValue={review.reviewDate}
-                      className="grow"
-                      required
+                {/* rating */}
+                <div className="space-y-2">
+                  <p>
+                    <Rating
+                      style={{ maxWidth: 180 }}
+                      value={rating}
+                      onChange={setRating}
                     />
-                  </label>
+                  </p>
+                </div>
 
-                  {/* comment */}
-                  <div>
-                    <textarea
-                      rows={"3"}
-                      placeholder="Comment"
-                      defaultValue={review.comment}
-                      name="comment"
-                      className="textarea textarea-bordered textarea-lg w-full "
-                    ></textarea>
-                  </div>
+                {/* review date */}
+                <label className="input w-full text-base font-semibold input-bordered flex items-center gap-2">
+                  Review Date:
+                  <input
+                    type="date"
+                    name="reviewDate"
+                    defaultValue={review.reviewDate}
+                    className="grow"
+                    required
+                  />
+                </label>
+
+                {/* comment */}
+                <div>
+                  <textarea
+                    rows={"3"}
+                    placeholder="Comment"
+                    defaultValue={review.comment}
+                    name="comment"
+                    className="textarea textarea-bordered textarea-lg w-full "
+                  ></textarea>
                 </div>
               </div>
+            </div>
 
-              {/* bottom */}
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="btn bg-[#193b42] h-16 hover:bg-[#102930] text-white px-14 text-lg font-semibold"
-                >
-                  Update Review
-                </button>
-              </div>
-            </form>
-          </div>
-        </dialog>
-      </tr>
-    </tbody>
+            {/* bottom */}
+            <div className="text-center">
+              <button
+                type="submit"
+                className="btn bg-[#193b42] h-16 hover:bg-[#102930] text-white px-14 text-lg font-semibold"
+              >
+                Update Review
+              </button>
+            </div>
+          </form>
+        </div>
+      </dialog>
+    </>
   );
 };
 
