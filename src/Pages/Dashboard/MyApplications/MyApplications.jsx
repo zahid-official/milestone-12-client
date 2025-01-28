@@ -55,6 +55,7 @@ const MyApplications = () => {
     // fetching data
     const res = await axiosSecure.patch(`/editApplication/${id}`, editData);
     if (res.data.modifiedCount > 0) {
+      refetchMyApplication()
       toast.success("Application Updated Successfully");
       document.getElementById("editApplication").close();
     } else {

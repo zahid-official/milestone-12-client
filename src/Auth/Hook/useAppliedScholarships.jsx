@@ -4,29 +4,59 @@ import useAuth from "./useAuth";
 
 const useAppliedScholarships = () => {
   // useHooks
-  const {users} = useAuth();
+  const { users } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   // all cholarships
-  const { data: allScholarships = [] } = useQuery({
-    queryKey: ["allScholarships"],
+  const { data: allScholarships = [], refetch: refetchAllScholarships } =
+    useQuery({
+      queryKey: ["allScholarships"],
+      queryFn: async () => {
+        const res = await axiosSecure.get("/allScholarships");
+        return res.data;
+      },
+    });
+
+  // my scholarships
+  const { data: myScholarships = [], refetch: refetchMyApplication } = useQuery(
+    {
+      queryKey: ["myScholarships"],
+      queryFn: async () => {
+        const res = await axiosSecure.get(`/myScholarships/${users.email}`);
+        return res.data;
+      },
+    }
+  );
+
+  // all reviews
+  const { data: allReviews = [], refetch: refetchAllReviews } = useQuery({
+    queryKey: ["allReviews"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/allScholarships");
+      const res = await axiosSecure.get("/allReviews");
       return res.data;
     },
   });
 
-  // my scholarships 
-  const { data: myScholarships = [], refetch:refetchMyApplication } = useQuery({
-    queryKey: ["myScholarships"],
+  // my review
+  const { data: myReviews = [], refetch: refetchMyReview } = useQuery({
+    queryKey: ["myReviews"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/myScholarships/${users.email}`);
+      const res = await axiosSecure.get(`/myReviews/${users.email}`);
       return res.data;
     },
   });
 
+  return {
+    allScholarships,
+    refetchAllScholarships,
+    myScholarships,
+    refetchMyApplication,
 
-  return {myScholarships, allScholarships, refetchMyApplication};
+    allReviews,
+    refetchAllReviews,
+    myReviews,
+    refetchMyReview,
+  };
 };
 
 export default useAppliedScholarships;
