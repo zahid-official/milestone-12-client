@@ -16,7 +16,7 @@ const Chart = () => {
 
     options: {
       chart: {
-        height: 300,
+        height: 285,
         type: "area",
       },
 
@@ -73,7 +73,7 @@ const Chart = () => {
           options={state.options}
           series={state.series}
           type="area"
-          height={300}
+          height={285}
           className="w-[92%] mx-auto"
         />
       </div>

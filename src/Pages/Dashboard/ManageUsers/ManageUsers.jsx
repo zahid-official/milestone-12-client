@@ -1,9 +1,9 @@
-import useAxiosSecure from "../../Auth/Hook/useAxiosSecure";
-import PageTitle from "../../Shared/PageTitle";
+import useAxiosSecure from "../../../Auth/Hook/useAxiosSecure";
+import PageTitle from "../../../Shared/PageTitle";
 import { useQuery } from "@tanstack/react-query";
 import { FaTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import useAuth from "../../Auth/Hook/useAuth";
+import useAuth from "../../../Auth/Hook/useAuth";
 
 const ManageUsers = () => {
   // useHook
@@ -76,7 +76,7 @@ const ManageUsers = () => {
     <div>
       {/* pageTitle */}
       <div className="bg-[#0f252a] text-white bg-[url(assets/bg.webp)] bg-cover bg-center bg-no-repeat">
-        <div className="p-20">
+        <div className="py-20">
           <PageTitle
             heading1={"Manage"}
             heading2={"Users"}

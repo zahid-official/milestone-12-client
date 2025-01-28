@@ -7,6 +7,7 @@ import useAuth from "../../Auth/Hook/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Auth/Hook/useAxiosSecure";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 // imgbb for upload image
 const imgbb_key = import.meta.env.VITE_Imgbb_Key;
@@ -16,24 +17,28 @@ const ApplicantDetails = ({ scholarshipData }) => {
   // useHooks
   const { users } = useAuth();
   const axiosPublic = useAxiosPublic();
-    const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const {
     _id: id,
     universityName,
     scholarshipCategory,
     subjectCategory,
+    universityCity,
+    universityCountry,
+    applicationFees,
+    serviceCharge,
   } = scholarshipData || {};
 
   // get UserId
-  const { data: userId = '' } = useQuery({
+  const { data: userId = "" } = useQuery({
     queryKey: ["userId"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/usersId/${users?.email}`);
       return res.data._id;
     },
   });
-
 
   // handleSubmit
   const { register, handleSubmit, reset } = useForm();
@@ -62,17 +67,18 @@ const ApplicantDetails = ({ scholarshipData }) => {
       },
     });
 
-    const status = "pending";
+    const status = "Pending";
     const scholarshipId = id;
     const email = users?.email;
     const name = users?.displayName;
+    const feedback = "No Feedback Given Yet."
     const applicantPhoto = res.data.data.display_url;
     const currentDate = new Date().toLocaleDateString();
 
     const applicantDetails = {
       applicantCountry,
-      applicantDistrict,
       gender,
+      applicantDistrict,
       applyingDegree,
       phoneNumber,
       applicantPhoto,
@@ -90,8 +96,12 @@ const ApplicantDetails = ({ scholarshipData }) => {
       status,
       scholarshipId,
       currentDate,
+      universityCity,
+      universityCountry,
+      applicationFees,
+      serviceCharge,
+      feedback,
     };
-
 
     if (res.data.success) {
       const applicantRes = await axiosSecure.post(
@@ -102,6 +112,7 @@ const ApplicantDetails = ({ scholarshipData }) => {
         console.log(applicantRes.data);
         toast.success("Applied for Scholarship Successfully");
         reset();
+        navigate("/");
       }
     }
   };

@@ -91,7 +91,7 @@ const DashboardLayout = () => {
 
                   
                   <li>
-                    <NavLink to="/dashboard/manageReviews">All Reviews</NavLink>
+                    <NavLink to="/dashboard/allReviews">All Reviews</NavLink>
                   </li>
                   <li>
                     <NavLink to="/dashboard/allScholarships">

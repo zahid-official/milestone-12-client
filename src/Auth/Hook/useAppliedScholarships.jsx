@@ -1,19 +1,32 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
+import useAuth from "./useAuth";
 
 const useAppliedScholarships = () => {
   // useHooks
+  const {users} = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  // applied scholarship
-  const { data: appliedScholarships = {} } = useQuery({
-    queryKey: ["appliedScholarships"],
+  // all cholarships
+  const { data: allScholarships = [] } = useQuery({
+    queryKey: ["allScholarships"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/appliedScholarship");
+      const res = await axiosSecure.get("/allScholarships");
       return res.data;
     },
   });
-  return {appliedScholarships};
+
+  // my scholarships 
+  const { data: myScholarships = [] } = useQuery({
+    queryKey: ["myScholarships"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/myScholarships/${users.email}`);
+      return res.data;
+    },
+  });
+
+
+  return {myScholarships, allScholarships};
 };
 
 export default useAppliedScholarships;

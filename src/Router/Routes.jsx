@@ -7,13 +7,13 @@ import PrivateRouter from "./PrivateRouter";
 import Home from "../Pages/Home/Home";
 import AddScholarship from "../Pages/AddScholarship/AddScholarship";
 import DashboardLayout from "../Layout/DashboardLayout";
-import MyProfile from "../Pages/Dashboard/MyProfile";
-import MyApplications from "../Pages/Dashboard/MyApplications";
-import MyReviews from "../Pages/Dashboard/MyReviews";
-import AllScholarships from "../Pages/Dashboard/AllScholarships";
-import AppliedScholarships from "../Pages/Dashboard/AppliedScholarships";
-import ManageReviews from "../Pages/Dashboard/ManageReviews";
-import ManageUsers from "../Pages/Dashboard/ManageUsers";
+import MyProfile from "../Pages/Dashboard/Profile/MyProfile";
+import MyApplications from "../Pages/Dashboard/MyApplications/MyApplications";
+import MyReviews from "../Pages/Dashboard/MyReviews/MyReviews";
+import AllScholarships from "../Pages/Dashboard/AllScholarships/AllScholarships";
+import AppliedScholarships from "../Pages/Dashboard/AppliedScholarships/AppliedScholarships";
+import AllReviews from "../Pages/Dashboard/AllReviews/AllReviews";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AdminRouter from "./AdminRouter";
 import ModeratorRouter from "./ModeratorRouter";
 import ScholarshipDetails from "../Pages/Home/ScholarshipDetails";
@@ -113,10 +113,10 @@ const Routes = createBrowserRouter([
         ),
       },
       {
-        path: "manageReviews",
+        path: "allReviews",
         element: (
           <ModeratorRouter>
-            <ManageReviews></ManageReviews>
+            <AllReviews></AllReviews>
           </ModeratorRouter>
         ),
       },

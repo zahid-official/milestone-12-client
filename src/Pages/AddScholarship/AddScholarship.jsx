@@ -6,7 +6,7 @@ const AddScholarship = () => {
     <>
       {/* pageTitle */}
       <div className="bg-[#0f252a] text-white bg-[url(assets/bg.webp)] bg-cover bg-center bg-no-repeat">
-        <div className="p-20">
+        <div className="py-20">
           <PageTitle
             heading1={"Add"}
             heading2={"Scholarship"}

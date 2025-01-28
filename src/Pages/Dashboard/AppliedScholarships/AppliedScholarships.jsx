@@ -1,14 +1,14 @@
-import PageTitle from "../../Shared/PageTitle";
+import PageTitle from "../../../Shared/PageTitle";
 
-const MyApplications = () => {
+const AppliedScholarships = () => {
   return (
     <div>
       {/* pageTitle */}
       <div className="bg-[#0f252a] text-white bg-[url(assets/bg.webp)] bg-cover bg-center bg-no-repeat">
-        <div className="p-20">
+        <div className="py-20">
           <PageTitle
-            heading1={"My"}
-            heading2={"Applications"}
+            heading1={"Applied"}
+            heading2={"Scholarships"}
             subHeading={"Dashboard"}
           ></PageTitle>
         </div>
@@ -17,4 +17,4 @@ const MyApplications = () => {
   );
 };
 
-export default MyApplications;
+export default AppliedScholarships;
