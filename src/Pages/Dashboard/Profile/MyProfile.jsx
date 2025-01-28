@@ -11,7 +11,7 @@ const MyProfile = () => {
   // useHooks
   const { role } = useRole();
   const { users } = useAuth();
-  const { myScholarships } = useAppliedScholarships();
+  const { myScholarships, myReviews } = useAppliedScholarships();
 
   const { email: userEmail, displayName } = users || {};
   const { email, name, applicantPhoto, applicantDistrict, applicantCountry } =
@@ -73,7 +73,7 @@ const MyProfile = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center">
-              <p className="text-2xl font-semibold">{myScholarships.length}</p>
+              <p className="text-2xl font-semibold">{myReviews.length}</p>
               <p>Reviews</p>
             </div>
           </div>

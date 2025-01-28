@@ -75,7 +75,7 @@ const Card = ({ card, idx }) => {
 
         {/* button */}
         <Link to={`/scholarshipDetails/${id}`} className="w-full">
-          <button className="btn w-full h-14 px-10 font-bold text-[#185744] bg-white hover:bg-[#193b42] hover:text-white transition-all duration-500 rounded-full">
+          <button className="btn w-full h-14 font-bold text-[#185744] bg-white hover:bg-[#193b42] hover:text-white transition-all duration-500 rounded-full">
             More Details <FaArrowRightLong />
           </button>
         </Link>

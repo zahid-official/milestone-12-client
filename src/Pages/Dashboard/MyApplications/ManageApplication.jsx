@@ -91,15 +91,6 @@ const ManageApplication = ({ scholarship, idx }) => {
     });
   };
 
-
-
-
-
-
-
-
-
-
   // handleReview
   const handleReview = async (event) => {
     event.preventDefault();
@@ -117,6 +108,7 @@ const ManageApplication = ({ scholarship, idx }) => {
     const name = scholarship.name;
     const applicantPhoto = scholarship.applicantPhoto;
     const email = scholarship.email;
+    const subjectCategory = scholarship.subject;
 
     if (!comment) {
       return setCommentError(true);
@@ -124,15 +116,17 @@ const ManageApplication = ({ scholarship, idx }) => {
     setCommentError(false);
 
     const reviewData = {
+      name,
+      email,
       rating,
+      university,
+      applicantPhoto,
       comment,
       reviewDate,
-      scholarshipName,
-      university,
+
       scholarshipId,
-      name,
-      applicantPhoto,
-      email,
+      scholarshipName,
+      subjectCategory,
     };
 
     const res = await axiosSecure.post("/addReview", reviewData);
@@ -142,9 +136,6 @@ const ManageApplication = ({ scholarship, idx }) => {
       document.getElementById(`addReview${scholarship._id}`).close();
     }
   };
-
-
-
 
   return (
     <>
