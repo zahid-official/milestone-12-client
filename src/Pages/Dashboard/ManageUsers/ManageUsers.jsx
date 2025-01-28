@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import useAuth from "../../../Auth/Hook/useAuth";
+import { useEffect, useState } from "react";
 
 const ManageUsers = () => {
   // useHook
@@ -18,6 +19,14 @@ const ManageUsers = () => {
       return res.data;
     },
   });
+
+  
+  // state for filter
+  const [filteredData, setFilteredData] = useState(users);
+  
+
+ 
+
 
   // handleDelete
   const handleDelete = (id) => {
@@ -72,6 +81,20 @@ const ManageUsers = () => {
     });
   };
 
+  // handleFilter
+  const handleFilter = async (role) => {
+    const res = await axiosSecure.get(`/filter/${role}`);
+    setFilteredData(res.data);
+    console.log(res.data);
+  };
+
+
+  // for filterData
+  useEffect(()=>{
+    setFilteredData(users)
+  }, [users])
+
+
   return (
     <div>
       {/* pageTitle */}
@@ -86,11 +109,42 @@ const ManageUsers = () => {
       </div>
 
       {/* users */}
-      <h2 className="p-6 text-3xl font-semibold">
-        Total Users: {users.length}
-      </h2>
+      <div className="flex items-center justify-between flex-wrap">
+        <h2 className="p-6 text-3xl font-semibold">
+          Total Users: {users.length}
+        </h2>
 
-      <div className="overflow-x-auto max-w-screen-xl mx-auto mt-8 px-6">
+        {/* dropdown */}
+        <div className=" h-8 w-64 relative">
+          <details className="dropdown px-6 absolute -left-[0]">
+            <summary className="btn m-1 text-lg font-bold">
+              Filter by Role
+            </summary>
+            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-3 space-y-3 shadow">
+              <li>
+                <button className="btn" onClick={() => handleFilter("User")}>
+                  User
+                </button>
+              </li>
+              <li>
+                <button className="btn" onClick={() => handleFilter("Admin")}>
+                  Admin
+                </button>
+              </li>
+              <li>
+                <button
+                  className="btn"
+                  onClick={() => handleFilter("Moderator")}
+                >
+                  Moderator
+                </button>
+              </li>
+            </ul>
+          </details>
+        </div>
+      </div>
+
+      <div className="overflow-x-auto max-w-screen-xl mx-auto mt-14 px-6">
         <table className="table border">
           {/* head */}
           <thead>
@@ -103,7 +157,7 @@ const ManageUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, idx) => (
+            {filteredData.map((user, idx) => (
               <tr className="hover" key={user._id}>
                 <th>{idx + 1}</th>
                 <td>{user?.name}</td>
