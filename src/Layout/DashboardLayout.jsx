@@ -80,14 +80,6 @@ const DashboardLayout = () => {
               {/* moderator & admin */}
               {(moderator || admin) && (
                 <>
-                  <li>
-                    <NavLink to="/dashboard/myReviews">My Reviews</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/myApplications">
-                      My Applications
-                    </NavLink>
-                  </li>
 
                   
                   <li>

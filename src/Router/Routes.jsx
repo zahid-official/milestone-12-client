@@ -18,6 +18,7 @@ import AdminRouter from "./AdminRouter";
 import ModeratorRouter from "./ModeratorRouter";
 import ScholarshipDetails from "../Pages/Home/ScholarshipDetails";
 import Payment from "../Pages/Home/Payment";
+import UserRouter from "./UserRouter";
 
 const Routes = createBrowserRouter([
   {
@@ -45,7 +46,9 @@ const Routes = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`https://edify-server.vercel.app/scholarshipDetails/${params.id}`),
+          fetch(
+            `https://edify-server.vercel.app/scholarshipDetails/${params.id}`
+          ),
       },
       {
         path: "/payment/:id",
@@ -55,7 +58,9 @@ const Routes = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`https://edify-server.vercel.app/scholarshipDetails/${params.id}`),
+          fetch(
+            `https://edify-server.vercel.app/scholarshipDetails/${params.id}`
+          ),
       },
       {
         path: "/login",
@@ -82,11 +87,19 @@ const Routes = createBrowserRouter([
       },
       {
         path: "myApplications",
-        element: <MyApplications></MyApplications>,
+        element: (
+          <UserRouter>
+            <MyApplications></MyApplications>
+          </UserRouter>
+        ),
       },
       {
         path: "myReviews",
-        element: <MyReviews></MyReviews>,
+        element: (
+          <UserRouter>
+            <MyReviews></MyReviews>
+          </UserRouter>
+        ),
       },
       {
         path: "addScholarship",
