@@ -5,11 +5,20 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../Auth/Hook/useAxiosSecure";
+import Swal from "sweetalert2";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
+import { useState } from "react";
 
 const MyApplications = () => {
   // useHooks
-  const { myScholarships } = useAppliedScholarships();
+  const { myScholarships, refetchMyApplication } = useAppliedScholarships();
   const axiosSecure = useAxiosSecure();
+
+  // react rating
+  const [rating, setRating] = useState(0);
+  const [ratingError, setRatingError] = useState(false);
+  const [commentError, setCommentError] = useState(false);
 
   // handleEdit
   const handleEdit = (status) => {
@@ -54,8 +63,75 @@ const MyApplications = () => {
     }
   };
 
+  // handleDelete
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // delete application
+        axiosSecure.delete(`/deleteMyApplication/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetchMyApplication();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Application has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
 
-  
+  // handleReview
+  const handleReview = async (event) => {
+    event.preventDefault();
+    if (!rating) {
+      return setRatingError(true);
+    }
+    setRatingError(false);
+
+    const reviewDate = event.target.reviewDate.value;
+    const comment = event.target.comment.value;
+
+    const scholarshipName = event.target.scholarshipName.value;
+    const university = event.target.university.value;
+    const scholarshipId = event.target.scholarshipId.value;
+    const name = event.target.name.value;
+    const applicantPhoto = event.target.applicantPhoto.value;
+    const email = event.target.email.value;
+    if (!comment) {
+      return setCommentError(true);
+    }
+    setCommentError(false);
+
+    const reviewData = {
+      rating,
+      comment,
+      reviewDate,
+      scholarshipName,
+      university,
+      scholarshipId,
+      name,
+      applicantPhoto,
+      email,
+    };
+
+    const res = await axiosSecure.post("/addReview", reviewData)
+    if(res.data.insertedId){
+      console.log(res.data);
+      toast.success("Review Added Successfully");
+      document.getElementById("addReview").close()
+    }
+
+  };
 
   return (
     <div>
@@ -165,13 +241,141 @@ const MyApplications = () => {
 
                   {/* add review */}
                   <td>
-                    <button className="btn btn-sm h-10 bg-orange-900 text-white hover:bg-orange-950">
+                    <button
+                      onClick={() =>
+                        document.getElementById("addReview").showModal()
+                      }
+                      className="btn btn-sm h-10 bg-orange-900 text-white hover:bg-orange-950"
+                    >
                       Add Review
                     </button>
+
+                    {/* review modal */}
+                    <dialog
+                      id="addReview"
+                      className="modal modal-bottom sm:modal-middle"
+                    >
+                      <div className="modal-box">
+                        <form
+                          onSubmit={handleReview}
+                          className="flex flex-col pb-10"
+                        >
+                          {/* top */}
+                          <div className="flex items-center justify-center xl:flex-row flex-col gap-10">
+                            <div className="w-full sm:px-8 px-5 sm:py-14 rounded-3xl space-y-8">
+                              <h2 className="text-3xl font-bold">
+                                Give Review
+                              </h2>
+
+                              {/* rating */}
+                              <div className="space-y-2">
+                                <p>
+                                  <Rating
+                                    style={{ maxWidth: 180 }}
+                                    value={rating}
+                                    onChange={setRating}
+                                  />
+                                </p>
+                                {ratingError && (
+                                  <p className="text-red-500 font-semibold">
+                                    Please give at least 1 star.
+                                  </p>
+                                )}
+                              </div>
+
+                              {/* review date */}
+                              <label className="input w-full text-base font-semibold input-bordered flex items-center gap-2">
+                                Review Date:
+                                <input
+                                  type="date"
+                                  name="reviewDate"
+                                  className="grow"
+                                  required
+                                />
+                              </label>
+
+                              {/* comment */}
+                              <div>
+                                <textarea
+                                  rows={"3"}
+                                  placeholder="Comment"
+                                  name="comment"
+                                  className="textarea textarea-bordered textarea-lg w-full "
+                                ></textarea>
+
+                                {commentError && (
+                                  <p className="text-red-500 font-semibold">
+                                    Please write at least single word.
+                                  </p>
+                                )}
+                              </div>
+
+                              {/* hidden data */}
+                              <div>
+                                {/* scholarshipName */}
+                                <input
+                                  type="text"
+                                  name="scholarshipName"
+                                  defaultValue={scholarship.scholarshipName}
+                                  className="border hidden"
+                                />
+                                {/* university */}
+                                <input
+                                  type="text"
+                                  name="university"
+                                  defaultValue={scholarship.university}
+                                  className="border hidden"
+                                />
+                                {/* scholarshipId */}
+                                <input
+                                  type="text"
+                                  name="scholarshipId"
+                                  defaultValue={scholarship.scholarshipId}
+                                  className="border hidden"
+                                />
+                                {/* name */}
+                                <input
+                                  type="text"
+                                  name="name"
+                                  defaultValue={scholarship.name}
+                                  className="border hidden"
+                                />
+
+                                {/* applicantPhoto */}
+                                <input
+                                  type="text"
+                                  name="applicantPhoto"
+                                  defaultValue={scholarship.applicantPhoto}
+                                  className="border hidden"
+                                />
+                                {/* email */}
+                                <input
+                                  type="text"
+                                  name="email"
+                                  defaultValue={scholarship.email}
+                                  className="border hidden"
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* bottom */}
+                          <div className="text-center">
+                            <button
+                              type="submit"
+                              className="btn bg-[#193b42] h-16 hover:bg-[#102930] text-white px-14 text-lg font-semibold"
+                            >
+                              Add Review
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </dialog>
                   </td>
 
                   {/* actions */}
                   <td className="text-center space-x-2">
+                    {/* details */}
                     <Link
                       to={`/scholarshipDetails/${scholarship.scholarshipId}`}
                     >
@@ -180,125 +384,130 @@ const MyApplications = () => {
                       </button>
                     </Link>
 
+                    {/* edit */}
                     <button
                       onClick={() => handleEdit(scholarship.status)}
                       className="btn bg-slate-500 hover:bg-slate-700 text-white"
                     >
                       <FaPencilAlt size={24}></FaPencilAlt>
-
-                      {/* edit application modal*/}
-                      <dialog
-                        id="editApplication"
-                        className="modal modal-bottom sm:modal-middle"
-                      >
-                        <div className="modal-box">
-                          <form
-                            onSubmit={handleSubmit(onSubmit)}
-                            className="flex flex-col pb-10"
-                          >
-                            {/* top */}
-                            <div className="flex items-center justify-center xl:flex-row flex-col gap-10">
-                              {/* leftside */}
-                              <div className="w-full sm:px-10 px-5 sm:py-14 rounded-3xl space-y-8">
-                                {/* row-01 */}
-                                <h2 className="text-3xl font-bold">
-                                  Update Application
-                                </h2>
-                                <input
-                                  type="text"
-                                  name="applicantCountry"
-                                  defaultValue={scholarship.applicantCountry}
-                                  {...register("applicantCountry")}
-                                  placeholder="Applicant Country"
-                                  className="input input-bordered w-full text-base font-semibold"
-                                />
-
-                                <input
-                                  type="text"
-                                  name="applicantDistrict"
-                                  defaultValue={scholarship.applicantDistrict}
-                                  {...register("applicantDistrict")}
-                                  placeholder="Applicant Village & District"
-                                  className="input input-bordered w-full text-base font-semibold"
-                                />
-
-                                {/* row-02 */}
-                                <select
-                                  className="select select-bordered w-full text-base font-semibold"
-                                  name="gender"
-                                  {...register("gender")}
-                                  defaultValue={scholarship.gender}
-                                >
-                                  <option value={scholarship.gender} disabled>
-                                    {scholarship.gender}
-                                  </option>
-                                  <option value="Male">Male</option>
-                                  <option value="Female">Female</option>
-                                  <option value="Custom">Custom</option>
-                                </select>
-
-                                <select
-                                  className="select select-bordered w-full text-base font-semibold"
-                                  name="applyingDegree"
-                                  {...register("applyingDegree")}
-                                  defaultValue={scholarship.applyingDegree}
-                                >
-                                  <option
-                                    value={scholarship.applyingDegree}
-                                    disabled
-                                  >
-                                    {scholarship.applyingDegree}
-                                  </option>
-                                  <option value="Masters">Masters</option>
-                                  <option value="Bachelor">Bachelor</option>
-                                  <option value="Diploma">Diploma</option>
-                                </select>
-
-                                {/* row-03 */}
-                                <input
-                                  type="text"
-                                  name="sscResult"
-                                  defaultValue={scholarship.sscResult}
-                                  {...register("sscResult")}
-                                  placeholder="SSC Result"
-                                  className="input input-bordered w-full text-base font-semibold"
-                                />
-
-                                <input
-                                  type="text"
-                                  name="hscResult"
-                                  defaultValue={scholarship.hscResult}
-                                  {...register("hscResult")}
-                                  placeholder="HSC Result"
-                                  className="input input-bordered w-full text-base font-semibold"
-                                />
-                              </div>
-                            </div>
-
-                            <div className="text-center">
-                              <input
-                                type="text"
-                                defaultValue={scholarship._id}
-                                {...register("id")}
-                                className="hidden"
-                              />
-
-                              <button
-                                type="submit"
-                                className="btn bg-[#193b42] h-16 hover:bg-[#102930] text-white px-14 text-lg font-semibold"
-                              >
-                                Update Application
-                              </button>
-                            </div>
-                          </form>
-                        </div>
-                      </dialog>
                     </button>
 
-                    <button onClick={()=>handleDelete(scholarship._id)} className="btn bg-red-500 hover:bg-red-700 text-white">
+                    {/* delete */}
+                    <button
+                      onClick={() => handleDelete(scholarship._id)}
+                      className="btn bg-red-500 hover:bg-red-700 text-white"
+                    >
                       <FaTrash size={24}></FaTrash>
                     </button>
                   </td>
+
+                  {/* edit application modal*/}
+                  <dialog
+                    id="editApplication"
+                    className="modal modal-bottom sm:modal-middle"
+                  >
+                    <div className="modal-box">
+                      <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        className="flex flex-col pb-10"
+                      >
+                        {/* top */}
+                        <div className="flex items-center justify-center xl:flex-row flex-col gap-10">
+                          {/* leftside */}
+                          <div className="w-full sm:px-10 px-5 sm:py-14 rounded-3xl space-y-8">
+                            {/* row-01 */}
+                            <h2 className="text-3xl font-bold">
+                              Update Application
+                            </h2>
+                            <input
+                              type="text"
+                              name="applicantCountry"
+                              defaultValue={scholarship.applicantCountry}
+                              {...register("applicantCountry")}
+                              placeholder="Applicant Country"
+                              className="input input-bordered w-full text-base font-semibold"
+                            />
+
+                            <input
+                              type="text"
+                              name="applicantDistrict"
+                              defaultValue={scholarship.applicantDistrict}
+                              {...register("applicantDistrict")}
+                              placeholder="Applicant Village & District"
+                              className="input input-bordered w-full text-base font-semibold"
+                            />
+
+                            {/* row-02 */}
+                            <select
+                              className="select select-bordered w-full text-base font-semibold"
+                              name="gender"
+                              {...register("gender")}
+                              defaultValue={scholarship.gender}
+                            >
+                              <option value={scholarship.gender} disabled>
+                                {scholarship.gender}
+                              </option>
+                              <option value="Male">Male</option>
+                              <option value="Female">Female</option>
+                              <option value="Custom">Custom</option>
+                            </select>
+
+                            <select
+                              className="select select-bordered w-full text-base font-semibold"
+                              name="applyingDegree"
+                              {...register("applyingDegree")}
+                              defaultValue={scholarship.applyingDegree}
+                            >
+                              <option
+                                value={scholarship.applyingDegree}
+                                disabled
+                              >
+                                {scholarship.applyingDegree}
+                              </option>
+                              <option value="Masters">Masters</option>
+                              <option value="Bachelor">Bachelor</option>
+                              <option value="Diploma">Diploma</option>
+                            </select>
+
+                            {/* row-03 */}
+                            <input
+                              type="text"
+                              name="sscResult"
+                              defaultValue={scholarship.sscResult}
+                              {...register("sscResult")}
+                              placeholder="SSC Result"
+                              className="input input-bordered w-full text-base font-semibold"
+                            />
+
+                            <input
+                              type="text"
+                              name="hscResult"
+                              defaultValue={scholarship.hscResult}
+                              {...register("hscResult")}
+                              placeholder="HSC Result"
+                              className="input input-bordered w-full text-base font-semibold"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="text-center">
+                          <input
+                            type="text"
+                            defaultValue={scholarship._id}
+                            {...register("id")}
+                            className="hidden"
+                          />
+
+                          <button
+                            type="submit"
+                            className="btn bg-[#193b42] h-16 hover:bg-[#102930] text-white px-14 text-lg font-semibold"
+                          >
+                            Update Application
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </dialog>
                 </tr>
               ))}
             </tbody>

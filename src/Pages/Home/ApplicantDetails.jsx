@@ -29,6 +29,7 @@ const ApplicantDetails = ({ scholarshipData }) => {
     universityCountry,
     applicationFees,
     serviceCharge,
+    scholarshipName,
   } = scholarshipData || {};
 
   // get UserId
@@ -101,6 +102,7 @@ const ApplicantDetails = ({ scholarshipData }) => {
       applicationFees,
       serviceCharge,
       feedback,
+      scholarshipName,
     };
 
     if (res.data.success) {

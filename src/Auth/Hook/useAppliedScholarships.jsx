@@ -17,7 +17,7 @@ const useAppliedScholarships = () => {
   });
 
   // my scholarships 
-  const { data: myScholarships = [] } = useQuery({
+  const { data: myScholarships = [], refetch:refetchMyApplication } = useQuery({
     queryKey: ["myScholarships"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/myScholarships/${users.email}`);
@@ -26,7 +26,7 @@ const useAppliedScholarships = () => {
   });
 
 
-  return {myScholarships, allScholarships};
+  return {myScholarships, allScholarships, refetchMyApplication};
 };
 
 export default useAppliedScholarships;
