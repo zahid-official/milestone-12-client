@@ -64,10 +64,10 @@ const Review = ({ review, idx }) => {
     if (res.data.modifiedCount > 0) {
       refetchMyReview();
       toast.success("Review Updated Successfully");
-      document.getElementById("editReview").close();
+      document.getElementById(`editReview${review._id}`).close();
     } else {
       toast.warn("No Updating Data Found!");
-      document.getElementById("editReview").close();
+      document.getElementById(`editReview${review._id}`).close();
     }
   };
 
@@ -94,7 +94,7 @@ const Review = ({ review, idx }) => {
         <td className="text-center space-x-2">
           {/* edit */}
           <button
-            onClick={() => document.getElementById("editReview").showModal()}
+            onClick={() => document.getElementById(`editReview${review._id}`).showModal()}
             className="btn bg-slate-500 hover:bg-slate-700 text-white"
           >
             <FaPencilAlt size={24}></FaPencilAlt>
@@ -110,7 +110,7 @@ const Review = ({ review, idx }) => {
         </td>
       </tr>
       {/* review modal */}
-      <dialog id="editReview" className="modal modal-bottom sm:modal-middle">
+      <dialog id={`editReview${review._id}`} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <form onSubmit={handleReview} className="flex flex-col pb-10">
             {/* top */}
