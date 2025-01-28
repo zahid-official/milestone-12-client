@@ -1,5 +1,13 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import useRole from "../Auth/Hook/useRole";
+import logo from "/assets/logo.png";
+import { FaHome } from "react-icons/fa";
+import { FaCircleUser, FaFileShield, FaFileSignature } from "react-icons/fa6";
+import { SiFiles } from "react-icons/si";
+import { MdRateReview } from "react-icons/md";
+import { HiDocumentAdd } from "react-icons/hi";
+import { IoDocumentsSharp } from "react-icons/io5";
+import { PiUsersThreeFill } from "react-icons/pi";
 
 const DashboardLayout = () => {
   // useHook
@@ -51,15 +59,21 @@ const DashboardLayout = () => {
             ></label>
             <ul className="menu bg-base-200 text-base-content min-h-full w-64 p-4">
               {/* Sidebar content here */}
-              <h2 className="text-4xl p-4 font-bold title-font">Edify</h2>
+              <Link to={"/"}>
+                <h2 className="text-4xl p-4 font-bold title-font flex items-center title-font">
+                  <img src={logo} className="mr-1.5" alt="" /> Edify
+                </h2>
+              </Link>
 
               {/* navigation links */}
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/">
+                  <FaHome size={23}></FaHome> Home
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard" end>
-                  My Profile
+                  <FaCircleUser size={22}></FaCircleUser> My Profile
                 </NavLink>
               </li>
 
@@ -67,11 +81,13 @@ const DashboardLayout = () => {
               {user && (
                 <>
                   <li>
-                    <NavLink to="/dashboard/myReviews">My Reviews</NavLink>
+                    <NavLink to="/dashboard/myReviews">
+                      <FaFileSignature size={22}></FaFileSignature> My Reviews
+                    </NavLink>
                   </li>
                   <li>
                     <NavLink to="/dashboard/myApplications">
-                      My Applications
+                      <FaFileShield size={22}></FaFileShield> My Applications
                     </NavLink>
                   </li>
                 </>
@@ -80,31 +96,34 @@ const DashboardLayout = () => {
               {/* moderator & admin */}
               {(moderator || admin) && (
                 <>
-
-                  
                   <li>
-                    <NavLink to="/dashboard/allReviews">All Reviews</NavLink>
+                    <NavLink to="/dashboard/allReviews">
+                      <MdRateReview size={24} ></MdRateReview> All Reviews
+                    </NavLink>
                   </li>
+
                   <li>
                     <NavLink to="/dashboard/allScholarships">
-                      All Scholarships
+                      <SiFiles size={20} ></SiFiles> All Scholarships
                     </NavLink>
                   </li>
+
                   <li>
                     <NavLink to="/dashboard/addScholarship">
-                      Add Scholarship
+                    <HiDocumentAdd size={28} className="-mr-1 -ml-1"></HiDocumentAdd> Add Scholarship
                     </NavLink>
                   </li>
+
                   <li>
                     <NavLink to="/dashboard/appliedScholarships">
-                      Applied Scholarships
+                     <IoDocumentsSharp size={22} className=""></IoDocumentsSharp> Applied Scholarships
                     </NavLink>
                   </li>
 
                   {admin && (
                     <li>
                       <NavLink to="/dashboard/manageUsers">
-                        Manage Users
+                       <PiUsersThreeFill size={22}></PiUsersThreeFill> Manage Users
                       </NavLink>
                     </li>
                   )}

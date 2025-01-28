@@ -61,7 +61,7 @@ const Chart = () => {
   });
 
   return (
-    <div>
+    <div className="h-full">
       <div
         id="chart"
         className="bg-[#0f252a] sm:py-20 py-10 rounded-lg shadow-2xl"

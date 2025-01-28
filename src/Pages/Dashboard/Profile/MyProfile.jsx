@@ -79,7 +79,7 @@ const MyProfile = () => {
           </div>
         </div>
 
-        <div className="h-full xl:col-span-2 2xl:mr-10">
+        <div className="h-full xl:col-span-2 2xl:mr-10 max-h-[480px] rounded-xl overflow-hidden">
           <Chart></Chart>
         </div>
       </div>

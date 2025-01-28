@@ -7,26 +7,32 @@ const useAppliedScholarships = () => {
   const { users } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  // all cholarships
-  const { data: allScholarships = [], refetch: refetchAllScholarships } =
-    useQuery({
+  // all scholarships
+  const { data: allScholarships = [], refetch: refetchAllScholarships } = useQuery({
       queryKey: ["allScholarships"],
       queryFn: async () => {
         const res = await axiosSecure.get("/allScholarships");
         return res.data;
       },
-    });
+  });
+
+  // appliedScholarships
+  const { data: appliedScholarships = [], refetch: refetchAppliedScholarships,} = useQuery({
+    queryKey: ["appliedScholarships"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/appliedScholarships");
+      return res.data;
+    },
+  });
 
   // my scholarships
-  const { data: myScholarships = [], refetch: refetchMyApplication } = useQuery(
-    {
+  const { data: myScholarships = [], refetch: refetchMyApplication } = useQuery({
       queryKey: ["myScholarships"],
       queryFn: async () => {
         const res = await axiosSecure.get(`/myScholarships/${users.email}`);
         return res.data;
       },
-    }
-  );
+  });
 
   // all reviews
   const { data: allReviews = [], refetch: refetchAllReviews } = useQuery({
@@ -49,6 +55,8 @@ const useAppliedScholarships = () => {
   return {
     allScholarships,
     refetchAllScholarships,
+    appliedScholarships,
+    refetchAppliedScholarships,
     myScholarships,
     refetchMyApplication,
 

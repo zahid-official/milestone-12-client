@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../Auth/Hook/useAuth";
+import logo from "/assets/logo.png";
 
 const Navbar = () => {
   // useContext
@@ -60,7 +61,9 @@ const Navbar = () => {
         {/* start */}
         <div className="navbar-start">
           <Link to={"/"}>
-            <h2 className="text-4xl font-bold title-font">Edify</h2>
+            <h2 className="text-4xl p-4 font-bold title-font flex items-center title-font">
+              <img src={logo} className="mr-1.5" alt="" /> Edify
+            </h2>
           </Link>
         </div>
 
