@@ -36,6 +36,7 @@ const AppliedScholarships = () => {
                 <th>Subject</th>
                 <th>Degree</th>
                 <th>Apply Fees</th>
+                <th>Status</th>
                 <th className="text-center">Actions</th>
               </tr>
             </thead>
