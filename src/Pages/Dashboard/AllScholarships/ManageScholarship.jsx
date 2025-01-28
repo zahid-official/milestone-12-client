@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form";
-import { FaEye, FaPencilAlt } from "react-icons/fa";
+import { FaEye, FaPencilAlt, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
@@ -9,7 +9,7 @@ import useAxiosSecure from "../../../Auth/Hook/useAxiosSecure";
 
 const ManageScholarship = ({ scholarship, idx }) => {
   // useHooks
-  const {refetchAllScholarships} = useAppliedScholarships();
+  const { refetchAllScholarships } = useAppliedScholarships();
   const axiosSecure = useAxiosSecure();
 
   // handleEdit
@@ -24,14 +24,13 @@ const ManageScholarship = ({ scholarship, idx }) => {
       confirmButtonText: "Yes, Edit it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        document.getElementById(scholarship._id).showModal()
+        document.getElementById(scholarship._id).showModal();
       }
     });
   };
 
   const { register, handleSubmit } = useForm();
   const onSubmit = async (formData) => {
-
     const {
       universityName,
       universityCountry,
@@ -65,7 +64,10 @@ const ManageScholarship = ({ scholarship, idx }) => {
     };
 
     // fetching data
-    const res = await axiosSecure.patch(`/editScholarship/${scholarship._id}`, editData);
+    const res = await axiosSecure.patch(
+      `/editScholarship/${scholarship._id}`,
+      editData
+    );
     if (res.data.modifiedCount > 0) {
       refetchAllScholarships();
       toast.success("Application Updated Successfully");
@@ -74,6 +76,33 @@ const ManageScholarship = ({ scholarship, idx }) => {
       toast.warn("No Updating Data Found!");
       document.getElementById(scholarship._id).close();
     }
+  };
+
+  // handleDelete
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // delete Scholarship
+        axiosSecure.delete(`/deleteScholarship/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetchAllScholarships();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Scholarship has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
   };
 
   return (
@@ -116,12 +145,12 @@ const ManageScholarship = ({ scholarship, idx }) => {
           </button>
 
           {/* delete */}
-          {/* <button
+          <button
             onClick={() => handleDelete(scholarship._id)}
             className="btn bg-red-500 hover:bg-red-700 text-white"
           >
             <FaTrash size={24}></FaTrash>
-          </button> */}
+          </button>
         </td>
 
         {/* edit application modal*/}
