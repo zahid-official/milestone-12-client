@@ -331,7 +331,9 @@ const ManageApplication = ({ scholarship, idx }) => {
               <div className="flex items-center justify-center xl:flex-row flex-col gap-10">
                 <div className="w-full sm:px-10 px-5 sm:py-14 rounded-3xl space-y-8">
                   {/* row-01 */}
-                  <h2 className="text-3xl font-bold">Update Application</h2>
+                  <h2 className="text-3xl font-bold mb-8">
+                    Update Application
+                  </h2>
                   <input
                     type="text"
                     name="applicantCountry"
