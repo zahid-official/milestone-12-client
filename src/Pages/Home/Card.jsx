@@ -14,7 +14,9 @@ const Card = ({ card, idx }) => {
     universityCity,
     universityCountry,
     subjectCategory,
+    avgRating,
   } = card;
+
 
   return (
     <>
@@ -33,7 +35,7 @@ const Card = ({ card, idx }) => {
           <div className="flex items-center gap-1 ">
             <FaStar size={25} color="#ffc808"></FaStar>
             <span className="font-semibold title-font text-lg text-white">
-              5.0
+              {avgRating ? avgRating : 0}
             </span>
           </div>
         </div>

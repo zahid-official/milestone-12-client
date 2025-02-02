@@ -1,4 +1,3 @@
-
 import useAppliedScholarships from "../../../Auth/Hook/useAppliedScholarships";
 import PageTitle from "../../../Shared/PageTitle";
 
@@ -7,9 +6,6 @@ import ManageApplication from "./ManageApplication";
 const MyApplications = () => {
   // useHooks
   const { myScholarships } = useAppliedScholarships();
-
-
-
 
   return (
     <div>
@@ -48,7 +44,11 @@ const MyApplications = () => {
             </thead>
             <tbody>
               {myScholarships.map((scholarship, idx) => (
-                <ManageApplication key={scholarship._id} scholarship={scholarship} idx={idx}></ManageApplication>
+                <ManageApplication
+                  key={scholarship._id}
+                  scholarship={scholarship}
+                  idx={idx}
+                ></ManageApplication>
               ))}
             </tbody>
           </table>

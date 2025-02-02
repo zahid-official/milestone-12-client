@@ -13,7 +13,6 @@ const Banner = () => {
   return (
     <>
       <Swiper
-        // loop={true}
         spaceBetween={40}
         pagination={{
           clickable: true,

@@ -51,16 +51,16 @@ const ManageScholarship = ({ scholarship, idx }) => {
       universityName,
       universityCountry,
       universityCity,
-      universityRank,
+      universityRank: parseInt(universityRank),
       scholarshipName,
       scholarshipCategory,
       subjectCategory,
       deadline,
       degree,
-      stipend,
-      tuitionFee,
-      serviceCharge,
-      applicationFees,
+      stipend: parseInt(stipend),
+      tuitionFee: parseInt(tuitionFee),
+      serviceCharge: parseInt(serviceCharge),
+      applicationFees: parseInt(applicationFees),
     };
 
     // fetching data

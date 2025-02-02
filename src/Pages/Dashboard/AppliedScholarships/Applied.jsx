@@ -64,12 +64,9 @@ const Applied = ({ scholarship, idx }) => {
     if (!feedback) {
       return setError(true);
     }
-
     setError(false);
-    const res = await axiosSecure.patch(
-      `/feedback/${scholarship._id}`,
-      feedback
-    );
+
+    const res = await axiosSecure.patch(`/feedback/${scholarship._id}`, {feedback});
     if (res.data.modifiedCount > 0) {
       toast.success("Feedback Given Successfully");
       document.getElementById(`feedback${scholarship._id}`).close();

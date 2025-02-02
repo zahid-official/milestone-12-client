@@ -1,8 +1,11 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Navbar from "../../Shared/Navbar";
 import PageTitle from "../../Shared/PageTitle";
+import Stories from "./Stories";
+
 
 const ScholarshipDetails = () => {
+
   // useLoaderData
   const loadedData = useLoaderData();
 
@@ -21,6 +24,10 @@ const ScholarshipDetails = () => {
     serviceCharge,
     applicationFees,
   } = loadedData;
+
+
+
+  
 
   return (
     <>
@@ -97,10 +104,22 @@ const ScholarshipDetails = () => {
       </div>
 
       {/* description */}
-      <div className="pb-40 lg:pt-20 pt-12 px-6 max-w-screen-xl mx-auto">
+      <div className="pb-32 lg:pt-20 pt-12 px-6 max-w-screen-xl mx-auto">
         <h2 className="text-4xl font-semibold">Description</h2>
         <span className="bg-[#22a45a] w-[105px] h-[2.5px] mt-1 block"></span>
         <p className="mt-6">{description}</p>
+      </div>
+
+      {/* Scholarship Review */}
+      <div className="pb-40 px-6 text-center">
+        <h2 className="text-4xl font-semibold inline-flex flex-col items-end">
+          Stories from Applicants
+          <span className="bg-[#22a45a] w-[199px] h-[3.5px] mt-2.5 block"></span>
+        </h2>
+
+        <div className="px-6 max-w-screen-xl mx-auto pt-10">
+          <Stories id={id}></Stories>
+        </div>
       </div>
     </>
   );

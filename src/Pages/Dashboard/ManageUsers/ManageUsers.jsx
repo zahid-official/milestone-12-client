@@ -20,13 +20,8 @@ const ManageUsers = () => {
     },
   });
 
-  
   // state for filter
   const [filteredData, setFilteredData] = useState(users);
-  
-
- 
-
 
   // handleDelete
   const handleDelete = (id) => {
@@ -88,12 +83,10 @@ const ManageUsers = () => {
     console.log(res.data);
   };
 
-
   // for filterData
-  useEffect(()=>{
-    setFilteredData(users)
-  }, [users])
-
+  useEffect(() => {
+    setFilteredData(users);
+  }, [users]);
 
   return (
     <div>
@@ -109,7 +102,7 @@ const ManageUsers = () => {
       </div>
 
       {/* users */}
-      <div className="flex items-center justify-between flex-wrap">
+      <div className="flex items-center justify-between flex-wrap pt-10">
         <h2 className="p-6 text-3xl font-semibold">
           Total Users: {users.length}
         </h2>
@@ -144,7 +137,7 @@ const ManageUsers = () => {
         </div>
       </div>
 
-      <div className="overflow-x-auto max-w-screen-xl mx-auto mt-14 px-6">
+      <div className="overflow-x-auto max-w-screen-xl mx-auto mt-14 px-6 pb-36">
         <table className="table border">
           {/* head */}
           <thead>
@@ -168,12 +161,12 @@ const ManageUsers = () => {
                       pointerEvents:
                         loggedUser.email === user?.email ? "none" : "auto",
                     }}
-                    defaultValue={user?.role ? user.role : ""}
+                    defaultValue={user.role}
                     onChange={(e) => handleRole(user._id, e.target.value)}
                     className="select select-bordered"
                   >
-                    <option value="" disabled>
-                      User
+                    <option value={user.role} disabled>
+                      {user.role}
                     </option>
                     <option value="Admin">Admin</option>
                     <option value="Moderator">Moderator</option>

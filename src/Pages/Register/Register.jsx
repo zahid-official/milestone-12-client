@@ -73,7 +73,6 @@ const Register = () => {
         setUsers(result.user);
 
         // create user in Database
-        console.log(result.user.email);
         const user = {
           name: result.user.displayName,
           email: result.user.email,

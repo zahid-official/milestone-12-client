@@ -1,5 +1,6 @@
 import Navbar from "../../Shared/Navbar";
 import Banner from "./Banner";
+import Achievements from "./Extra/Achievements";
 import Feature from "./Feature";
 import TopScholarship from "./TopScholarship";
 
@@ -27,6 +28,12 @@ const Home = () => {
       <section>
         <TopScholarship></TopScholarship>
       </section>
+
+      {/* Achievements */}
+      <section>
+        <Achievements></Achievements>
+      </section>
+
     </>
   );
 };

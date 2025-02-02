@@ -137,6 +137,7 @@ const ManageApplication = ({ scholarship, idx }) => {
     }
   };
 
+
   return (
     <>
       <tr>
