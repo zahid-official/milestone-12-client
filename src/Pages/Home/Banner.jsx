@@ -49,7 +49,7 @@ const Banner = () => {
                 <p>
                 Explore the best scholarships and universities that align with your academic interests and career goals. Apply with ease and take the next step toward achieving your educational dreams.
                 </p>
-                <Link to={"/"}>
+                <Link to={"/allScholarship"}>
                   <button className="btn bg-[#0f252a] border-[#3f5155] hover:border-[#3f5155] rounded-none px-8 hover:bg-[#0c1f24] text-white mt-7 text-lg font-semibold">
                     Explore Now
                   </button>
@@ -86,7 +86,7 @@ const Banner = () => {
                 <p>
                 Our system helps you find scholarships that match your academic background, interests, and career goals. Save time with a personalized search tool, highlighting the best opportunities for you.
                 </p>
-                <Link to={"/"}>
+                <Link to={"/allScholarship"}>
                   <button className="btn bg-[#0f252a] border-[#3f5155] hover:border-[#3f5155] rounded-none px-8 hover:bg-[#0c1f24] text-white mt-7 text-lg font-semibold">
                     Find Now
                   </button>
@@ -123,7 +123,7 @@ const Banner = () => {
                 <p>
                 Apply to multiple scholarships through a single platform, easily manage and track the status of your applications, and receive timely reminders to ensure you never miss an important deadline or opportunity.
                 </p>
-                <Link to={"/"}>
+                <Link to={"/allScholarship"}>
                   <button className="btn bg-[#0f252a] border-[#3f5155] hover:border-[#3f5155] rounded-none px-8 hover:bg-[#0c1f24] text-white mt-7 text-lg font-semibold">
                     Apply Now
                   </button>
