@@ -9,11 +9,13 @@ body{
 }
 
 .title-font{
-    font-family: "DM Serif Display", serif;
+    font-family: "Space Grotesk", serif;
     letter-spacing: 1.1px;
+    font-weight: bolder;
 }
 .sub-font{
     font-family: "Space Grotesk", serif;
+    font-weight: bolder;
 }
 
 

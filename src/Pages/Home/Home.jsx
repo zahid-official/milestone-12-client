@@ -4,6 +4,7 @@ import Achievements from "./Extra/Achievements";
 import Feature from "./Feature";
 import OurStory from "./OurStory";
 import TopScholarship from "./TopScholarship";
+import WhyWe from "./WhyWe";
 
 const Home = () => {
   return (
@@ -21,13 +22,13 @@ const Home = () => {
       </header>
 
       {/* our story */}
-      <div className=" pt-40 xl:pb-16 pb-36">
+      <section className=" pt-40 xl:pb-16 pb-36">
         <OurStory></OurStory>
-      </div>
+      </section>
 
-      {/* feature */}
-      <section className="">
-        <Feature></Feature>
+      {/* why we */}
+      <section>
+        <WhyWe></WhyWe>
       </section>
 
       {/* top scholarship */}
@@ -40,6 +41,10 @@ const Home = () => {
         <Achievements></Achievements>
       </section>
 
+      {/* feature */}
+      <section className="pb-36">
+        <Feature></Feature>
+      </section>
     </>
   );
 };

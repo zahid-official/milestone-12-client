@@ -2,7 +2,7 @@ import applicant from "/assets/applicant.avif";
 
 const Achievements = () => {
   return (
-    <div className="bg-[#0f2327] bg-[url(/assets/achievements.avif)] bg-no-repeat bg-cover min-h-[87vh] flex justify-center items-center mb-60 sub-font text-white sm:px-16 px-6 py-28">
+    <div className="bg-[#0f2327] bg-[url(/assets/achievements.avif)] bg-no-repeat bg-cover min-h-[87vh] flex justify-center items-center mb-40 sub-font text-white sm:px-16 px-6 py-28">
       <div className="grid xl:grid-cols-2 gap-2 w-full max-w-screen-xl mx-auto">
         {/* left */}
         <div className="flex xl:justify-start justify-center">

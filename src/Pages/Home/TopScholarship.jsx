@@ -19,7 +19,7 @@ const TopScholarship = () => {
   return (
     <>
       {/* Caption  */}
-      <div className=" text-center px-6 pt-44">
+      <div className=" text-center px-6 pt-32">
         <h4 className="text-[#007f6b] title-font font-bold">
           Opening Paths to Excellence
         </h4>
