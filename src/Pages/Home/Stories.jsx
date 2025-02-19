@@ -28,7 +28,6 @@ const Stories = ({ id }) => {
     })
   },[])
 
-  console.log(viewCard);
 
   // tanstack for stories
   const { data: stroies = [] } = useQuery({

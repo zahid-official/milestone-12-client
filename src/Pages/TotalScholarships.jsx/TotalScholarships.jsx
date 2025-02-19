@@ -52,6 +52,12 @@ const TotalScholarships = () => {
       .then((res) => setSearchData(res.data));
   };
 
+  // handleSorting
+  const handleSorting = (value) => {
+    axiosSecure.get(`/sorting/${value}`)
+    .then(res => setAllScholarships(res.data));
+  };
+
   // useEffect for allScholarships
   useEffect(() => {
     axiosSecure
@@ -88,36 +94,63 @@ const TotalScholarships = () => {
         </div>
       </div>
 
-      {/* search */}
-      <form
-        onSubmit={handleSearch}
-        className="flex xl:justify-end justify-center xl:px-0 px-6 pt-28 pb-12 gap-4 max-w-screen-xl  mx-auto"
-      >
-        <label className="input input-bordered max-w-sm w-full flex items-center gap-2">
-          <input
-            type="text"
-            name="search"
-            className="grow"
-            placeholder="Search Scholarship, University & Degree"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            className="h-4 w-4 opacity-70"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </label>
+      <div className="pt-28 pb-12 flex justify-between max-w-screen-xl mx-auto ">
+        {/* sort */}
+        <div>
+          <details className="dropdown">
+            <summary className="btn m-1">Sort by Fees</summary>
+            <ul className="menu space-y-3 dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+              <li>
+                <button
+                  onClick={() => handleSorting("Ascending")}
+                  className="btn"
+                >
+                  Ascending
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleSorting("Descending")}
+                  className="btn"
+                >
+                  Descending
+                </button>
+              </li>
+            </ul>
+          </details>
+        </div>
 
-        <button className="btn rounded bg-[#193b42]  border-[#3f5155] hover:border-[#3f5155] px-8 hover:bg-[#102930] text-white text-lg font-semibold">
-          Search
-        </button>
-      </form>
+        {/* search */}
+        <form
+          onSubmit={handleSearch}
+          className="flex xl:justify-end justify-center xl:px-0 px-6  gap-4"
+        >
+          <label className="input input-bordered max-w-sm w-full flex items-center gap-2">
+            <input
+              type="text"
+              name="search"
+              className="grow"
+              placeholder="Search Scholarship, University & Degree"
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="h-4 w-4 opacity-70"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </label>
+
+          <button className="btn rounded bg-[#193b42]  border-[#3f5155] hover:border-[#3f5155] px-8 hover:bg-[#102930] text-white text-lg font-semibold">
+            Search
+          </button>
+        </form>
+      </div>
 
       {/* total scholarships */}
       {searchData.length > 0 ? (

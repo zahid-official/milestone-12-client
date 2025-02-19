@@ -22,7 +22,6 @@ const Home = () => {
     })
   }, []);
 
-  console.log(isScroll);
   return (
     <>
       {/* Header */}

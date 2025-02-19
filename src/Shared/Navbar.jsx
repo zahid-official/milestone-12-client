@@ -4,9 +4,11 @@ import useAuth from "../Auth/Hook/useAuth";
 import logo from "/assets/logo.png";
 import { useEffect } from "react";
 
+
 const Navbar = () => {
   // useContext
   const { users, logout } = useAuth();
+
 
 
   // handleSignOut
