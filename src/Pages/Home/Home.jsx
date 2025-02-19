@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Navbar from "../../Shared/Navbar";
 import Banner from "./Banner";
 import Achievements from "./Extra/Achievements";
@@ -9,12 +10,25 @@ import WeOffers from "./WeOffers";
 import WhyWe from "./WhyWe";
 
 const Home = () => {
+  const [isScroll, setIsScroll] = useState(false);
+  useEffect(() => {
+    window.addEventListener('scroll', ()=>{
+      if(scrollY > 120) {
+        setIsScroll(true)
+      }
+      else{
+        setIsScroll(false);
+      }
+    })
+  }, []);
+
+  console.log(isScroll);
   return (
     <>
       {/* Header */}
       <header className="bg-[#0f252a] text-white bg-[url(/assets/bg.avif)] bg-cover bg-no-repeat">
         {/* navbar */}
-        <div className="">
+        <div className={isScroll ? "fixed duration-700 top-0 z-50 w-full bg-[#10252a] dark:bg-[#010313] backdrop-blur-sm dark:backdrop-blur-sm bg-opacity-70 dark:bg-opacity-70" : ""}>
           <Navbar></Navbar>
         </div>
         {/* banner */}
@@ -49,7 +63,7 @@ const Home = () => {
       </section>
 
       {/* we offers */}
-      <section  className="pb-28">
+      <section className="pb-28">
         <WeOffers></WeOffers>
       </section>
 
