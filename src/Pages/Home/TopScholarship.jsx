@@ -19,14 +19,14 @@ const TopScholarship = () => {
   return (
     <>
       {/* Caption  */}
-      <div className=" text-center px-6 pt-32">
+      <div className=" text-center px-6">
         <h4 className="text-[#007f6b] title-font font-bold">
           Opening Paths to Excellence
         </h4>
         <h2 className="text-5xl font-semibold my-1.5 title-font">
           Top Scholarship
         </h2>
-        <p className="pt-5">
+        <p className="pt-3">
           Top Scholarships provide valuable financial support, helping students
           achieve academic success <br className="lg:block hidden" /> and pursue
           their educational goals without financial burdens.
@@ -34,16 +34,16 @@ const TopScholarship = () => {
       </div>
 
       {/* cards */}
-      <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-10 xl:max-w-[85rem] sm:max-w-[55rem] md:px-10 px-4 mx-auto mt-20 pb-12">
+      <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-10 xl:max-w-[85rem] sm:max-w-[55rem] md:px-10 px-4 mx-auto mt-14 pb-12">
         {scholarship.map((card, idx) => (
           <Card key={card._id} card={card} idx={idx}></Card>
         ))}
       </div>
 
       {/* btn */}
-      <div className="pb-36 text-center">
+      <div className="text-center">
         <Link to={"/allScholarship"}>
-          <button className="btn rounded bg-[#193b42] h-14 border-[#3f5155] hover:border-[#3f5155] px-8 hover:bg-[#102930] text-white mt-7 text-lg font-semibold">
+          <button className="btn rounded bg-[#193b42] h-14 border-[#3f5155] hover:border-[#3f5155] px-8 hover:bg-[#102930] text-white mt-5 text-lg font-semibold">
             All Scholarships
           </button>
         </Link>

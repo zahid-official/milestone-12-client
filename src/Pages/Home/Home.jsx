@@ -34,12 +34,12 @@ const Home = () => {
       </section>
 
       {/* top scholarship */}
-      <section>
+      <section className="pt-28 pb-40">
         <TopScholarship></TopScholarship>
       </section>
 
       {/* Achievements */}
-      <section>
+      <section className="mb-36">
         <Achievements></Achievements>
       </section>
 
@@ -49,12 +49,12 @@ const Home = () => {
       </section>
 
       {/* we offers */}
-      <section>
+      <section  className="pb-28">
         <WeOffers></WeOffers>
       </section>
 
       {/* faq */}
-      <section>
+      <section className="pb-36">
         <FAQ></FAQ>
       </section>
     </>

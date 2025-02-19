@@ -30,7 +30,7 @@ const WeOffers = () => {
   return (
     <div className="sm:px-20 px-4 ">
       {/* Caption  */}
-      <div className=" text-center pt-5 px-6 lg:pb-6">
+      <div className=" text-center px-6 lg:pb-6">
         <h4 className="font-semibold text-lg">What We Offer</h4>
         <h2 className="text-4xl font-semibold my-1.5 title-font">
           Top-tier education anywhere
@@ -38,7 +38,7 @@ const WeOffers = () => {
       </div>
 
       {/* content */}
-      <div className="grid lg:grid-cols-2 gap-10 pt-5 pb-36">
+      <div className="grid lg:grid-cols-2 gap-10 pt-4">
         {/* left */}
         <div className="grid sm:grid-cols-5 items-center gap-5 order-1">
           <div className="sm:col-span-2">
