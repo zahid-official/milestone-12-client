@@ -44,6 +44,11 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className="text-lg font-bold">
+        <NavLink to={"/contact"} className={"dark:hover:bg-slate-800"}>
+          Contact
+        </NavLink>
+      </li>
+      <li className="text-lg font-bold">
         <NavLink to={"/dashboard"} className={"dark:hover:bg-slate-800"}>
           Dashboard
         </NavLink>
@@ -75,7 +80,7 @@ const Navbar = () => {
         {/* start */}
         <div className="navbar-start">
           <Link to={"/"}>
-            <h2 className="text-4xl p-4 font-bold title-font flex items-center title-font">
+            <h2 className="text-4xl sm:p-4 font-bold title-font flex items-center title-font">
               <img src={logo} className="mr-1.5" alt="" /> Edify
             </h2>
           </Link>
@@ -87,7 +92,7 @@ const Navbar = () => {
         </div>
 
         {/* end */}
-        <div className="navbar-end gap-2">
+        <div className="navbar-end sm:gap-2">
           {/* darkmode */}
           <div className="mr-2 flex items-center">
             <label className="swap swap-rotate">
@@ -163,8 +168,8 @@ const Navbar = () => {
             </div>
           )}
 
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost xl:hidden">
+          <div className="dropdown ">
+            <div tabIndex={0} role="button" className="btn btn-ghost xl:hidden p-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-7 w-7"

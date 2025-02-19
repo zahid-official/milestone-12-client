@@ -94,7 +94,7 @@ const TotalScholarships = () => {
         </div>
       </div>
 
-      <div className="pt-28 pb-12 flex justify-between max-w-screen-xl mx-auto ">
+      <div className="pt-28 pb-12 flex flex-wrap sm:justify-between gap-5 justify-center items-center max-w-screen-xl mx-auto px-4">
         {/* sort */}
         <div>
           <details className="dropdown">
@@ -123,7 +123,7 @@ const TotalScholarships = () => {
         {/* search */}
         <form
           onSubmit={handleSearch}
-          className="flex xl:justify-end justify-center xl:px-0 px-6  gap-4"
+          className="flex sm:flex-nowrap flex-wrap xl:justify-end justify-center xl:px-0 px-6  gap-4"
         >
           <label className="input input-bordered max-w-sm w-full flex items-center gap-2">
             <input
