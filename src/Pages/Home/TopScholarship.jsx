@@ -23,7 +23,7 @@ const TopScholarship = () => {
         <h4 className="text-[#007f6b] title-font font-bold">
           Opening Paths to Excellence
         </h4>
-        <h2 className="text-5xl font-semibold my-1.5 title-font">
+        <h2 className="sm:text-5xl text-4xl font-semibold my-1.5 title-font">
           Top Scholarship
         </h2>
         <p className="pt-3">

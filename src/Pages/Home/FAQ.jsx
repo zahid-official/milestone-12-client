@@ -37,7 +37,7 @@ const FAQ = () => {
             What documents are needed to apply?
             </div>
             <div className="collapse-content">
-              <p>Typically, you will need proof of enrollment, transcripts, recommendation letters, and a personal statement. Please check each scholarship's specific requirements.</p>
+              <p>Typically, you will need proof of enrollment, transcripts, recommendation letters, and a personal statement. Please check each scholarship’s specific requirements.</p>
             </div>
           </div>
 

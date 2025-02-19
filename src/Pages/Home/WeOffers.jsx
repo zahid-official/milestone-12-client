@@ -92,7 +92,7 @@ const WeOffers = () => {
             </div>
           </div>
 
-          <div className="bg-[#214d52] text-white px-5 py-12 rounded-xl mt-8 flex justify-between items-center gap-2.5">
+          <div className="bg-[#214d52] text-white px-5 py-12 rounded-xl mt-8 flex sm:justify-between justify-center sm:text-left text-center flex-wrap items-center gap-2.5">
             <div>
               <h3 className="text-xl font-bold pb-1.5">
                 Still have questions?
@@ -103,7 +103,7 @@ const WeOffers = () => {
             </div>
 
             <button
-              className="btn px-5 rounded bg-[#0f252a] text-white
+              className="btn px-5 sm:mt-0 mt-4 rounded bg-[#0f252a] text-white
              border-none"
             >
               Ask Anytime
