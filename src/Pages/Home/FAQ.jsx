@@ -16,7 +16,7 @@ const FAQ = () => {
       </div>
 
       {/* Q&A */}
-      <div className=" sm:px-20 px-4 flex md:flex-row flex-col w-full gap-8 pt-9">
+      <div className="dark:text-black sm:px-20 px-4 flex md:flex-row flex-col w-full gap-8 pt-9">
         {/* left */}
         <div className="space-y-4 w-full">
           {/* q-1 */}

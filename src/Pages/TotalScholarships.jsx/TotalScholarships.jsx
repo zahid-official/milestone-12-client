@@ -161,7 +161,7 @@ const TotalScholarships = () => {
           <select
             defaultValue={pageItems}
             onChange={handlePageItems}
-            className="select select-bordered"
+            className="select select-bordered dark:text-black"
           >
             <option value="6">6</option>
             <option value="8">8</option>

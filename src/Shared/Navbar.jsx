@@ -131,7 +131,7 @@ const Navbar = () => {
                   tabIndex={0}
                   className="dropdown-content menu bg-base-100 dark:bg-[#0a1020] rounded-box z-30 w-44 px-2 py-5 border dark:border-none text-center text-base font-bold space-y-3 -right-14"
                 >
-                  <li className="px-3 border-b pb-4 text-black">
+                  <li className="px-3 border-b pb-4 dark:text-white text-black">
                     {users?.displayName}
                   </li>
                   <li className="px-3">
@@ -148,13 +148,13 @@ const Navbar = () => {
           ) : (
             <div className="sm:flex gap-2.5 hidden">
               <Link to={"/login"}>
-                <button className="btn bg-[#010313] dark:bg-base-200 dark:text-black dark:hover:bg-base-300 hover:bg-[#161f2c] text-white text-lg font-bold min-w-28">
+                <button className="btn bg-[#010313] border-none dark:bg-base-200 dark:text-black dark:hover:bg-base-300 hover:bg-[#161f2c] text-white text-lg font-bold min-w-28">
                   Sign In
                 </button>
               </Link>
 
               <Link to={"/register"}>
-                <button className="btn bg-[#010313] dark:bg-base-200 dark:text-black dark:hover:bg-base-300 hover:bg-[#161f2c] text-white text-lg font-bold min-w-28">
+                <button className="btn bg-[#010313] border-none dark:bg-base-200 dark:text-black dark:hover:bg-base-300 hover:bg-[#161f2c] text-white text-lg font-bold min-w-28">
                   Sign Up
                 </button>
               </Link>

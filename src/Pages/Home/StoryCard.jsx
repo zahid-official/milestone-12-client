@@ -12,7 +12,7 @@ const StoryCard = ({ story, idx }) => {
   return (
     <>
       <div className="">
-        <div className="max-w-md mx-auto text-left mb-12 min-h-[50vh] bg-[#00353b] hover:scale-105 duration-500 w-full bg-[url(/assets/topScholarship.svg)] bg-cover sm:px-10 px-7 sm:py-14 py-10 rounded-2xl flex flex-col space-y-8">
+        <div className="max-w-md mx-auto text-left mb-12 min-h-[60vh] bg-[#00353b] hover:scale-105 duration-500 w-full bg-[url(/assets/topScholarship.svg)] bg-cover sm:px-10 px-7 sm:py-14 py-10 rounded-2xl flex flex-col space-y-8">
           <div className="flex items-center justify-between w-full">
             {/* img */}
             <div className="h-16 w-16 border rounded-full">

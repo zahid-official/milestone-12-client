@@ -6,7 +6,6 @@ import Chart from "./Chart";
 import profileBg from "/assets/profile.webp";
 import profile from "/assets/profile.png";
 
-
 const MyProfile = () => {
   // useHooks
   const { role } = useRole();
@@ -14,7 +13,7 @@ const MyProfile = () => {
   const { myScholarships, myReviews } = useAppliedScholarships();
 
   const { email: userEmail, displayName } = users || {};
-  const { email, name, applicantPhoto, applicantDistrict, applicantCountry } =
+  const { email, name, applicantPhoto, applicantDistrict, applicantCountry, phoneNumber } =
     myScholarships[0] || {};
 
   return (
@@ -56,9 +55,14 @@ const MyProfile = () => {
             {name || displayName}
           </h3>
           <p className="-mt-1.5 text-lg">{email || userEmail}</p>
-          {applicantCountry && <p className="-mt-1.5 text-sm">
-            {applicantDistrict}, {applicantCountry}
-          </p>}
+          {applicantCountry && (
+            <p className="-mt-1.5 text-sm">
+              {applicantDistrict}, {applicantCountry}
+            </p>
+          )}
+
+          {phoneNumber && <p className="-mt-1.5 text-sm">{phoneNumber}</p>}
+
           {(role.admin || role.moderator) && (
             <p className="mt-0.5">
               <span className="font-semibold">Role:</span>{" "}

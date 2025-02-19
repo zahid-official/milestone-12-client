@@ -20,7 +20,7 @@ const AllReviews = () => {
       </div>
 
       {/* all reviews */}
-      <div>
+      <div className="dark:bg-black dark:text-white">
         <h2 className="pt-12 px-8 text-3xl font-semibold">
           Total Reviews: {allReviews.length}
         </h2>

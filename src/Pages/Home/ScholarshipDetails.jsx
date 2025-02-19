@@ -95,7 +95,7 @@ const ScholarshipDetails = () => {
             </p>
 
             <Link to={`/payment/${id}`}>
-              <button className="btn font-bold mt-10 px-12 h-16 bg-[#193b42] hover:bg-[#102930] text-lg text-white">
+              <button className="btn font-bold mt-10 px-12 h-16 bg-[#193b42] border-none hover:bg-[#102930] text-lg text-white">
                 <span className="z-10">Apply for Scholarship</span>
               </button>
             </Link>

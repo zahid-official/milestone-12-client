@@ -35,57 +35,57 @@ const Feature = () => {
       <div className="gap-7 grid max-w-2xl">
         <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-8">
             {/* 1 */}
-          <div className="inline-flex justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
+          <div className="inline-flex group justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
             <span>
               <LiaUniversitySolid size={45} color="#015d4e" />
             </span>
-            <h4 className="title-font font-bold text-xl">Universities</h4>
-            <p className="text-xs text-[#015d4e]">Explore top universities worldwide</p>
+            <h4 className="title-font font-bold text-xl dark:group-hover:text-black">Universities</h4>
+            <p className="text-xs text-[#015d4e] dark:text-[#41b19e]">Explore top universities worldwide</p>
           </div>
 
             {/* 2 */}
-          <div className="inline-flex justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
+          <div className="inline-flex group justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
             <span >
               <LuGraduationCap size={43} color="#015d4e" />
             </span>
-            <h4 className="title-font font-bold text-xl">Scholarships</h4>
-            <p className="text-xs text-[#015d4e]">Find merit and field scholarships</p>
+            <h4 className="title-font font-bold text-xl dark:group-hover:text-black">Scholarships</h4>
+            <p className="text-xs text-[#015d4e] dark:text-[#41b19e]">Find merit and field scholarships</p>
           </div>
 
             {/* 3 */}
-          <div className="inline-flex justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
+          <div className="inline-flex group justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
             <span className="mt-1.5">
               <MdOutlineMonitorHeart size={40} color="#015d4e" />
             </span>
-            <h4 className="title-font font-bold text-xl">Monitoring</h4>
-            <p className="text-xs text-[#015d4e]">Track scholarship applications</p>
+            <h4 className="title-font font-bold text-xl dark:group-hover:text-black">Monitoring</h4>
+            <p className="text-xs text-[#015d4e] dark:text-[#41b19e]">Track scholarship applications</p>
           </div>
 
             {/* 4 */}
-          <div className="inline-flex justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
+          <div className="inline-flex group justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
             <span>
               <LuBadgeCheck  size={40} color="#015d4e" />
             </span>
-            <h4 className="title-font font-bold text-xl">Eligibility</h4>
-            <p className="text-xs text-[#015d4e] mt-0.5">Interest based Tailored Scholarships</p>
+            <h4 className="title-font font-bold text-xl dark:group-hover:text-black">Eligibility</h4>
+            <p className="text-xs text-[#015d4e] dark:text-[#41b19e] mt-0.5">Interest based Tailored Scholarships</p>
           </div>
             
             {/* 5 */}
-          <div className="inline-flex justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
+          <div className="inline-flex group justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
             <span>
               <MdOutlineSupport size={42} color="#015d4e" />
             </span>
-            <h4 className="title-font font-bold text-xl">Guidance</h4>
-            <p className="text-xs text-[#015d4e]">Receive guidance from experts</p>
+            <h4 className="title-font font-bold text-xl dark:group-hover:text-black">Guidance</h4>
+            <p className="text-xs text-[#015d4e] dark:text-[#41b19e]">Receive guidance from experts</p>
           </div>
 
             {/* 6 */}
-          <div className="inline-flex justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
+          <div className="inline-flex group justify-center items-center flex-col sm:px-2.5 py-12 rounded-2xl text-center border-2 border-base-200 hover:bg-base-200 hover:rotate-6 hover:scale-[1.15] duration-500">
             <span className="mt-1">
               <GrResources size={38} color="#015d4e" />
             </span>
-            <h4 className="title-font font-bold text-xl">Resources</h4>
-            <p className="text-xs text-[#015d4e]">Tips for successful applications</p>
+            <h4 className="title-font font-bold text-xl dark:group-hover:text-black">Resources</h4>
+            <p className="text-xs text-[#015d4e] dark:text-[#41b19e]">Tips for successful applications</p>
           </div>
         </div>
       </div>

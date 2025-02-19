@@ -7,10 +7,28 @@ import "swiper/css";
 import "swiper/css/bundle";
 import { Pagination } from "swiper/modules";
 import StoryCard from "./StoryCard";
+import { useEffect, useState } from "react";
 
 const Stories = ({ id }) => {
   // useHooks
   const axiosSecure = useAxiosSecure();
+  const [viewCard, setViewCard] = useState(3)
+
+  useEffect(()=>{
+    window.addEventListener("resize", ()=> {
+      if(innerWidth < 780){
+        setViewCard(1)
+      }
+      else if(innerWidth < 1080){
+        setViewCard(2)
+      }
+      else{
+        setViewCard(3)
+      }
+    })
+  },[])
+
+  console.log(viewCard);
 
   // tanstack for stories
   const { data: stroies = [] } = useQuery({
@@ -24,8 +42,8 @@ const Stories = ({ id }) => {
   return (
     <>
       <Swiper
-        loop={true}
-        slidesPerView={3}
+        // loop={true}
+        slidesPerView={viewCard}
         spaceBetween={30}
         pagination={{
           clickable: true,

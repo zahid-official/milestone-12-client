@@ -1,6 +1,7 @@
 import img from "/assets/weOffer.webp";
 import video from "/assets/weOffer.mp4";
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const WeOffers = () => {
   const videoRef = useRef(null);
@@ -102,12 +103,14 @@ const WeOffers = () => {
               </p>
             </div>
 
-            <button
-              className="btn px-5 sm:mt-0 mt-4 rounded bg-[#0f252a] text-white
+            <Link to={'https://mail.google.com/mail/?view=cm&fs=1&to=zahid.official8@gmail.com'} target="_blank">
+              <button
+                className="btn px-5 sm:mt-0 mt-4 rounded bg-[#0f252a] text-white
              border-none"
-            >
-              Ask Anytime
-            </button>
+              >
+                Ask Anytime
+              </button>
+            </Link>
           </div>
         </div>
       </div>

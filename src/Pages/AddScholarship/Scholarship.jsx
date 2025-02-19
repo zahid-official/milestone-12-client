@@ -82,7 +82,7 @@ const Scholarship = () => {
 
   return (
     <>
-      <div className="px-5 sm:w-11/12 mx-auto py-36">
+      <div className="px-5 sm:w-11/12 mx-auto py-36 dark:text-black">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-10"

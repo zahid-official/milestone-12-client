@@ -24,7 +24,7 @@ const WhyWe = () => {
         {/* 1 */}
         <div className="text-center hover:shadow-xl duration-300 hover:-translate-y-3 cursor-text px-8 pb-10 pt-5 rounded-xl">
           <div className="flex justify-center">
-            <img src={icon1} alt="" />
+            <img src={icon1} alt="" className="bg-white p-1 rounded" />
           </div>
           <h3 className="pt-4 font-semibold">Reach Goals</h3>
           <p className="max-w-60">Achieve your academic and career goals with ease.</p>
@@ -33,7 +33,7 @@ const WhyWe = () => {
         {/* 2*/}
         <div className="text-center hover:shadow-xl duration-300 hover:-translate-y-3 cursor-text px-8 pb-10 pt-5 rounded-xl">
           <div className="flex justify-center">
-            <img src={icon2} alt="" />
+            <img src={icon2} alt=""  className="bg-white p-1 rounded"/>
           </div>
           <h3 className="pt-4 font-semibold">Financial Support</h3>
           <p className="max-w-60">Receive the financial aid you need to succeed.</p>
@@ -42,7 +42,7 @@ const WhyWe = () => {
         {/* 3 */}
         <div className="text-center hover:shadow-xl duration-300 hover:-translate-y-3 cursor-text px-8 pb-10 pt-5 rounded-xl">
           <div className="flex justify-center">
-            <img src={icon3} alt="" />
+            <img src={icon3} alt=""  className="bg-white p-1 rounded"/>
           </div>
           <h3 className="pt-4 font-semibold">Study at Pace</h3>
           <p className="max-w-60">Learn at your own pace, without pressure or limits.</p>
@@ -51,7 +51,7 @@ const WhyWe = () => {
         {/* 4 */}
         <div className="text-center hover:shadow-xl duration-300 hover:-translate-y-3 cursor-text px-8 pb-10 pt-5 rounded-xl">
           <div className="flex justify-center">
-            <img src={icon4} alt="" />
+            <img src={icon4} alt=""  className="bg-white p-1 rounded"/>
           </div>
           <h3 className="pt-4 font-semibold">Endless Opportunities</h3>
           <p className="max-w-60">Unlock endless opportunities for growth and success</p>

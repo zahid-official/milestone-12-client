@@ -151,7 +151,7 @@ const ManageUsers = () => {
           </thead>
           <tbody>
             {filteredData.map((user, idx) => (
-              <tr className="hover" key={user._id}>
+              <tr className="hover hover:text-black" key={user._id}>
                 <th>{idx + 1}</th>
                 <td>{user?.name}</td>
                 <td>{user?.email}</td>
@@ -163,7 +163,7 @@ const ManageUsers = () => {
                     }}
                     defaultValue={user.role}
                     onChange={(e) => handleRole(user._id, e.target.value)}
-                    className="select select-bordered"
+                    className="select select-bordered dark:text-black"
                   >
                     <option value={user.role} disabled>
                       {user.role}

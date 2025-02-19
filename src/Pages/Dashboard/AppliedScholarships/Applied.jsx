@@ -103,7 +103,7 @@ const Applied = ({ scholarship, idx }) => {
           <select
             defaultValue={scholarship.status}
             onChange={(e) => handleStatus(scholarship._id, e.target.value)}
-            className="select select-bordered"
+            className="select select-bordered dark:text-black"
           >
             <option value={scholarship.status} disabled>
               {scholarship.status}
