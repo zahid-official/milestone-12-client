@@ -10,7 +10,7 @@ const OurStory = () => {
           <img src={ourStory1} alt="" className="rounded-lg col-span-2" />
           <div
             className="max-h-fit text-center ml-6 translate-y-4 z-30 lg:block hidden"
-            style={{ "writing-mode": "vertical-lr" }}
+            style={{ "writingMode": "vertical-lr" }}
           >
             <p className="uppercase text-sm">Years experiance</p>
             <h2 className="font-semibold text-8xl">25</h2>

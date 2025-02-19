@@ -4,6 +4,7 @@ import Achievements from "./Extra/Achievements";
 import Feature from "./Feature";
 import OurStory from "./OurStory";
 import TopScholarship from "./TopScholarship";
+import WeOffers from "./WeOffers";
 import WhyWe from "./WhyWe";
 
 const Home = () => {
@@ -44,6 +45,11 @@ const Home = () => {
       {/* feature */}
       <section className="pb-36">
         <Feature></Feature>
+      </section>
+
+      {/* we offers */}
+      <section>
+        <WeOffers></WeOffers>
       </section>
     </>
   );

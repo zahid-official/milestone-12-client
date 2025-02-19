@@ -22,7 +22,7 @@ const WhyWe = () => {
       {/* content */}
       <div className="sm:px-20 px-4 pt-10 flex flex-wrap justify-center items-center">
         {/* 1 */}
-        <div className="text-center hover:shadow-2xl duration-300 hover:-translate-y-3 cursor-text px-8 py-10 rounded-xl">
+        <div className="text-center hover:shadow-xl duration-300 hover:-translate-y-3 cursor-text px-8 py-10 rounded-xl">
           <div className="flex justify-center">
             <img src={icon1} alt="" />
           </div>
@@ -31,7 +31,7 @@ const WhyWe = () => {
         </div>
 
         {/* 2*/}
-        <div className="text-center hover:shadow-2xl duration-300 hover:-translate-y-3 cursor-text px-8 py-10 rounded-xl">
+        <div className="text-center hover:shadow-xl duration-300 hover:-translate-y-3 cursor-text px-8 py-10 rounded-xl">
           <div className="flex justify-center">
             <img src={icon2} alt="" />
           </div>
@@ -40,7 +40,7 @@ const WhyWe = () => {
         </div>
 
         {/* 3 */}
-        <div className="text-center hover:shadow-2xl duration-300 hover:-translate-y-3 cursor-text px-8 py-10 rounded-xl">
+        <div className="text-center hover:shadow-xl duration-300 hover:-translate-y-3 cursor-text px-8 py-10 rounded-xl">
           <div className="flex justify-center">
             <img src={icon3} alt="" />
           </div>
@@ -49,7 +49,7 @@ const WhyWe = () => {
         </div>
 
         {/* 4 */}
-        <div className="text-center hover:shadow-2xl duration-300 hover:-translate-y-3 cursor-text px-8 py-10 rounded-xl">
+        <div className="text-center hover:shadow-xl duration-300 hover:-translate-y-3 cursor-text px-8 py-10 rounded-xl">
           <div className="flex justify-center">
             <img src={icon4} alt="" />
           </div>
