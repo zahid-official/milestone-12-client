@@ -1,6 +1,7 @@
 import Navbar from "../../Shared/Navbar";
 import Banner from "./Banner";
 import Achievements from "./Extra/Achievements";
+import FAQ from "./FAQ";
 import Feature from "./Feature";
 import OurStory from "./OurStory";
 import TopScholarship from "./TopScholarship";
@@ -50,6 +51,11 @@ const Home = () => {
       {/* we offers */}
       <section>
         <WeOffers></WeOffers>
+      </section>
+
+      {/* faq */}
+      <section>
+        <FAQ></FAQ>
       </section>
     </>
   );
