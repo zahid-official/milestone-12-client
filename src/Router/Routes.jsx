@@ -21,6 +21,7 @@ import Payment from "../Pages/Home/Payment";
 import UserRouter from "./UserRouter";
 import TotalScholarships from "../Pages/TotalScholarships.jsx/TotalScholarships";
 import Contact from "../Pages/Home/Extra/Contact";
+import About from "../Pages/Home/About";
 
 const Routes = createBrowserRouter([
   {
@@ -34,7 +35,15 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact></Contact>
+        element: <Contact></Contact>,
+      },
+      {
+        path: "/about",
+        element: (
+          <PrivateRouter>
+            <About></About>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/allScholarship",

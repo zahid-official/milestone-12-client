@@ -28,3 +28,12 @@ a.active{
     color: black !important;
     background-color: #f2f2f2 !important;
 }
+
+input[type="radio"]{
+    border: none !important;
+}
+input[type="radio"]:checked {
+    border: none !important;
+    color: white !important;
+    background-color: #00353b !important;
+  }

@@ -78,18 +78,36 @@ const TotalScholarships = () => {
     axiosSecure.get("/total").then((res) => setCount(res.data.count));
   }, [axiosSecure]);
 
+  // useEffect for scroll navbar fixed
+  const [isScroll, setIsScroll] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (scrollY > 80) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
+    });
+  }, []);
+
   return (
     <>
       {/* pageTitle */}
       <div className="bg-[#0f252a] text-white bg-[url(/assets/bg.webp)] bg-cover bg-center bg-no-repeat">
-        <div>
+        <div
+          className={
+            isScroll
+              ? "fixed duration-700 top-0 z-50 w-full text-white bg-[#10252a] dark:bg-[#010313] backdrop-blur-sm dark:backdrop-blur-sm bg-opacity-70 dark:bg-opacity-70"
+              : ""
+          }
+        >
           <Navbar></Navbar>
         </div>
         <div className="pt-8 pb-20">
           <PageTitle
             heading1={"All"}
             heading2={"Scholarships"}
-            subHeading={"All Scholarships"}
+            subHeading={"All UScholarships"}
           ></PageTitle>
         </div>
       </div>

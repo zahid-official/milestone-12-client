@@ -4,12 +4,9 @@ import useAuth from "../Auth/Hook/useAuth";
 import logo from "/assets/logo.png";
 import { useEffect } from "react";
 
-
 const Navbar = () => {
   // useContext
   const { users, logout } = useAuth();
-
-
 
   // handleSignOut
   const handleSignOut = () => {
@@ -48,11 +45,21 @@ const Navbar = () => {
           Contact
         </NavLink>
       </li>
-      <li className="text-lg font-bold">
-        <NavLink to={"/dashboard"} className={"dark:hover:bg-slate-800"}>
-          Dashboard
-        </NavLink>
-      </li>
+
+      {users?.email && (
+        <>
+          <li className="text-lg font-bold">
+            <NavLink to={"/about"} className={"dark:hover:bg-slate-800"}>
+              About
+            </NavLink>
+          </li>
+          <li className="text-lg font-bold">
+            <NavLink to={"/dashboard"} className={"dark:hover:bg-slate-800"}>
+              Dashboard
+            </NavLink>
+          </li>
+        </>
+      )}
 
       {users?.email ? (
         ""
@@ -169,7 +176,11 @@ const Navbar = () => {
           )}
 
           <div className="dropdown ">
-            <div tabIndex={0} role="button" className="btn btn-ghost xl:hidden p-1">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost xl:hidden p-1"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-7 w-7"

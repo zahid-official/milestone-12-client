@@ -103,7 +103,7 @@ const WeOffers = () => {
               </p>
             </div>
 
-            <Link to={'https://mail.google.com/mail/?view=cm&fs=1&to=zahid.official8@gmail.com'} target="_blank">
+            <Link to={'/contact'}>
               <button
                 className="btn px-5 sm:mt-0 mt-4 rounded bg-[#0f252a] text-white
              border-none"

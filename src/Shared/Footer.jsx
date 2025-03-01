@@ -92,7 +92,7 @@ const Footer = () => {
           <a className="link link-hover">
             Address: +7811 Vermont Ave, <br /> Los Angeles, CA 90054
           </a>
-          <a className="link link-hover">Mail Us: hello@Edify.com</a>
+          <Link to={"https://mail.google.com/mail/?view=cm&fs=1&to=zahid.official8@gmail.com"} target="_blank" className="link link-hover">Mail Us: zahid.official8@gmail.com</Link>
         </nav>
       </footer>
 

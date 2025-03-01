@@ -61,7 +61,7 @@ const Payment = () => {
             <div className="flex gap-3">
               <button
                 onClick={goBack}
-                className="btn h-[52px] bg-transparent rounded-full"
+                className="btn h-[52px] dark:text-white bg-transparent rounded-full"
               >
                 <FaLeftLong size={18}></FaLeftLong>
               </button>
@@ -110,7 +110,7 @@ const Payment = () => {
             </div>
 
             {/* stripe */}
-            <div className="mt-14">
+            <div className="mt-14 dark:text-white">
               <Elements stripe={stripePromise}>
                 <CheckOut
                   fee={applicationFees}

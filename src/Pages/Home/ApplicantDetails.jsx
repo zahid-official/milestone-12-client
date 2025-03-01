@@ -122,7 +122,7 @@ const ApplicantDetails = ({ scholarshipData }) => {
   };
   return (
     <div>
-      <div className="px-5 sm:w-11/12 mx-auto">
+      <div className="px-5 sm:w-11/12 mx-auto dark:text-black">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-10"
@@ -323,7 +323,7 @@ const ApplicantDetails = ({ scholarshipData }) => {
           <div className="text-center">
             <button
               type="submit"
-              className="btn bg-[#193b42] h-16 hover:bg-[#102930] text-white px-14 mt-12 text-lg font-semibold"
+              className="btn border-none bg-[#193b42] h-16 hover:bg-[#102930] text-white px-14 mt-12 text-lg font-semibold"
             >
               Apply for Scholarship
             </button>
